@@ -1,11 +1,11 @@
 import { motion , useSpring  } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
-const Homepage = () => {
+const Homepage = () => {    
     const springProps = {
         type: 'spring',
-        stiffness: 1000, // Adjust as needed
-        damping: 300, // Adjust as needed
+        stiffness: 1000,
+        damping: 300,
     };
 
     const logos = [
@@ -95,3 +95,4 @@ const Homepage = () => {
 }
 
 export default Homepage
+
