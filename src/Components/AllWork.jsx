@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { asyncAllFrontend } from '../../Store/Actions/FrontendActions.jsx';
 
 const AllWork = () => {
-  const [activeLink, setActiveLink] = useState('all'); // 'all' is the default active link
 
+  const dispatch = useDispatch()
+  const [activeLink, setActiveLink] = useState('all');
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
-
+  
+  useEffect(() => {
+    dispatch(asyncAllFrontend())
+  }, [])
+  
   return (
     <div className='w-full overflow-x-hidden flex flex-col px-8 gap-16'>
+      
       <div className='h-[45vh]  w-full mt-16  flex flex-col justify-between'>
         <h1 className='no-scrollbar capitalize  h-[20vh] tracking-normal font-bold text-9xl'>Crafting</h1>
         <h1 className='no-scrollbar capitalize  tracking-wide italic font-thin text-[7.4rem] '>Exceptional Products</h1>
@@ -58,6 +66,7 @@ const AllWork = () => {
           Ui/Ux
         </Link>
       </div>
+      {/* <p>{JSON.stringify(allFrontendData)}</p> */}
     </div>
   );
 };

@@ -1,0 +1,39 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+    admin:null,
+    errors:[],
+    isAuthenticated:false
+}
+
+export const AdminReducer = createSlice({
+    name:"Admin",
+    initialState,
+    reducers:{
+
+    addadmin:(state,action) =>{
+    state.admin = action.payload
+    state.isAuthenticated = true
+    },
+    removeadmin:(state,action) =>{
+    state.admin = null
+    state.isAuthenticated = false
+    state.admin = []
+    },
+    iserror:(state,action) =>{
+    state.errors.push(action.payload)
+    },
+    removeerror:(state,action) =>{
+    state.errors =[]
+    }
+  }
+})
+
+export const {
+    addadmin,
+    removeadmin,
+    iserror,
+    removeerror 
+} = AdminReducer.actions
+
+export default AdminReducer.reducer

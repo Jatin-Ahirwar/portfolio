@@ -9,6 +9,9 @@ import Footer from './Components/Footer';
 import AllWork from './Components/AllWork';
 import LocomotiveScroll from 'locomotive-scroll';
 import AllContent from './Components/AllContent';
+import About from './Components/About';
+import Socials from './Components/Socials';
+import NotFound from './Components/NotFound';
 
 const App = () => {
   const locomotiveScroll = new LocomotiveScroll();
@@ -47,8 +50,19 @@ const App = () => {
             <Footer/>
           </> }/>
 
-          <Route path='/about' element={< Homepage />}/>
-          <Route path='/contact' element={<Footer />}/>
+          <Route path='/about' element={<>
+            <About />
+            <Footer/>
+          </>
+          }/>
+          <Route path='/contact' element={<>
+            <Socials />
+            <Footer />
+          </>
+          
+          }/>
+
+          <Route path='*' element={<NotFound/>} />
         </Routes>
     </div>
   )

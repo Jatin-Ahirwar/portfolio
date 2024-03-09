@@ -28,7 +28,7 @@ const Homepage = () => {
     ]
 
     return (
-    <div className='w-full min-h-[100vh] overflow-x-hidden flex  px-8 pt-32 '>
+    <div className='w-full min-h-[100vh] overflow-x-hidden flex  px-8 pt-32 max-lg'>
 
         <div className=' w-[50vw] min-h-[200vh]  flex flex-col justify-between '>
             
@@ -90,6 +90,7 @@ const Homepage = () => {
         <div className='w-[50vw] h-[100%]  pt-48 flex justify-end '>
             <img className='h-[100vh] w-[95%] object-cover ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" alt="" />               
         </div>
+        
     </div>
   )
 }
