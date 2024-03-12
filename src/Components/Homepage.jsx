@@ -1,5 +1,5 @@
-import { motion , useSpring  } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import { AnimatePresence, motion , useSpring  } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Homepage = () => {    
     const springProps = {
@@ -7,6 +7,23 @@ const Homepage = () => {
         stiffness: 1000,
         damping: 300,
     };
+
+    const pinnedElementRef = useRef(null);
+
+    useEffect(() => {
+      // GSAP code to apply pin effect
+      if (pinnedElementRef.current) {
+        gsap.to(pinnedElementRef.current, {
+          scrollTrigger: {
+            trigger: pinnedElementRef.current,
+            pin: true,
+            start: "top top",
+            end: "+=100%",
+            scrub: true,
+          },
+        });
+      }
+    }, []);
 
     const logos = [
         "https://www.w3.org/html/logo/downloads/HTML5_1Color_Black.png",
@@ -27,15 +44,64 @@ const Homepage = () => {
         "https://ik.imagekit.io/jatinahirwar/png-clipart-microsoft-visual-studio-express-computer-icons-microsoft-visual-c-visual-studio-code-studio-angle-studio-removebg-preview.png?updatedAt=1709711315212",
     ]
 
+    const text = "Full Stack Developer"
+    const text2 = "& Ui/Ux Designer"
+
+    const scrollToBottom = () => {
+        window.scrollTo({ top: window.pageYOffset + window.innerHeight * 1.5, behavior: 'smooth' });
+    };        
+
+
     return (
-    <div className='w-full min-h-[100vh] overflow-x-hidden flex  px-8 pt-32 max-lg'>
+    <div className='w-full  overflow-x-hidden flex  px-8 pt-24 max-lg'>
 
         <div className=' w-[50vw] min-h-[200vh]  flex flex-col justify-between '>
             
-            <div className='h-[40vh] '>
-                <div className=' absolute  flex flex-col gap-4'>
-                    <h1 className='text-9xl font-black overflow-y-hidden '>Full Stack Developer</h1>
-                    <h1 className='text-[6rem] h-[20vh] italic capitalize overflow-y-hidden' >& ui/ux Designer</h1>
+            <div className='h-[45vh]'>
+                <div className='no-scrollbar absolute flex flex-col justify-center '>
+                    <h1 className='text-9xl font-black py-3 overflow-hidden'>
+                        {text.split(" ").map((word, wordIndex) => (
+                            <span key={wordIndex}>
+                                {word.split("").map((char, charIndex) => (
+                                    <motion.span
+                                        className='overflow-hidden'
+                                        style={{ display: 'inline-block' }}
+                                        key={charIndex}
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{
+                                            ease: [0.83, 0, 0.17, 1],
+                                            delay: wordIndex * 0.2 + charIndex * 0.05 // Adjust delay as needed
+                                        }}
+                                    >
+                                        {char}
+                                    </motion.span>
+                            ))}
+                            {" "}
+                        </span>
+                    ))}                    
+                    </h1>
+
+                    <h1 className='text-[6rem]  italic capitalize' >
+                    {text2.split(" ").map((word, wordIndex) => (
+                        <motion.span
+                            key={wordIndex}
+                            initial={{ opacity: 0, x: -20 }} // Initial position adjusted for italic
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ ease: [0.83, 0, 0.17, 1], delay: .8 + wordIndex * .2, duration: .5 }} // Adjust delay and duration as needed
+                            style={{ display: 'inline-block' }}
+                        >
+                            {word}
+                            &nbsp; {/* Add a non-breaking space after each word */}
+                        </motion.span>
+                    ))}
+                    </h1>
+                    {/* <h1 className='text-[6rem]  italic capitalize' >
+                        {"& ui/ux Designer".split("").map((item,index)=>(
+                            <motion.span key={index}>{item}</motion.span>
+                        ))}
+                    </h1> */}
+
                 </div>
             </div>
 
@@ -50,22 +116,68 @@ const Homepage = () => {
                         <h1 className='text-xl tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
                     </div>
             </div>
+            
+            <div className='h-[18vh] flex flex-col justify-between pr-10'>
+                <h1>TECHNOLOGIES I WORK WITH</h1>
+                <div className='h-[12vh] overflow-x-auto no-scrollbar flex whitespace-nowrap'>
+                    {logos.map((logo, index) => (
+                        <motion.div
+                            initial={{x:"0%"}}
+                            animate={{x:"-2000%"}} 
+                            transition={{repeat:Infinity , ease:"linear" , duration:10 }}
+                            key={index} 
+                            className="mr-6  shrink-0 h-full w-24  flex items-center justify-center border border-solid"
+                        >
+                            <img className='object-cover h-3/6' src={logo} alt="" />
+                        </motion.div>
+                    ))}
 
-            <div className='h-[18vh]  flex flex-col justify-between pr-10'>
-                    <h1>TECHNOLOGIES I WORK WITH</h1>
-                    <div className='h-[12vh] overflow-x-auto w-full no-scrollbar flex gap-10 whitespace-nowrap'>
-                        {logos.map((logo,index)=>(
-                            <div key={index} className="shrink-0 h-full w-24  flex items-center justify-center border border-solid" >
-                                <img className='object-cover h-3/6' src={logo} alt="" />
-                            </div>
-                        ))}
-                    </div>
+                    {logos.map((logo, index) => (
+                        <motion.div
+                            initial={{x:"0%"}}
+                            animate={{x:"-2000%"}} 
+                            transition={{repeat:Infinity , ease:"linear" , duration:10 }}
+                            key={index} 
+                            className="mr-6  shrink-0 h-full w-24  flex items-center justify-center border border-solid"
+                        >
+                            <img className='object-cover h-3/6' src={logo} alt="" />
+                        </motion.div>
+                    ))}
+
+                    {logos.map((logo, index) => (
+                        <motion.div
+                            initial={{x:"0%"}}
+                            animate={{x:"-2000%"}} 
+                            transition={{repeat:Infinity , ease:"linear" , duration:10 }}
+                            key={index} 
+                            className="mr-6 shrink-0 h-full w-24  flex items-center justify-center border border-solid"
+                        >
+                            <img className='object-cover h-3/6' src={logo} alt="" />
+                        </motion.div>
+                    ))}
+                </div>
             </div>
 
-            <div className='h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center gap-1 items-center CECED] rounded-full'>
-                <i class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar overflow-y-hidden"></i>
-                <i class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center no-scrollbar overflow-y-hidden"></i>
-                <i class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center no-scrollbar overflow-y-hidden"></i>
+            <div onClick={scrollToBottom} className='overflow-y-auto h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center  items-center  rounded-full'>
+                <div className='no-scrollbar h-1/2 w-1/2 flex flex-col justify-center items-center '>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                    <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
+                </div>        
             </div>
 
             <div className='w-full pr-12 flex justify-between pt-8 pb-24  '>
@@ -84,13 +196,25 @@ const Homepage = () => {
 
             </div>
             
-
         </div>
 
-        <div className='w-[50vw] h-[100%]  pt-48 flex justify-end '>
-            <img className='h-[100vh] w-[95%] object-cover ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" alt="" />               
+        <div 
+            ref={pinnedElementRef}        
+            className='page22 w-[50vw] h-[100%]  no-scrollbar  pt-48 flex justify-end '>
+                <motion.img 
+                    initial={{y:"500px"}}
+                    animate={{y:"0"}}
+                    transition={{
+                        ease: [0.33, 1, 0.68, 1],
+                        duration:1.5,
+                        delay:.5
+                    }}
+
+                    className='h-[100vh] w-[95%] object-cover ' 
+                    src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" 
+                    alt="" />               
         </div>
-        
+
     </div>
   )
 }

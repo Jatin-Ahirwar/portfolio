@@ -12,12 +12,20 @@ import AllContent from './Components/AllContent';
 import About from './Components/About';
 import Socials from './Components/Socials';
 import NotFound from './Components/NotFound';
+import AllFrontend from './Components/AllFrontend';
+import AllMern from './Components/AllMern';
+import Alluiux from './Components/Alluiux';
+import AllBackend from './Components/AllBackend';
+import SingleFrontend from './Components/SingleFrontend';
+import SingleBackend from './Components/SingleBackend';
+import SingleMern from './Components/SingleMern';
+import SingleUiUx from './Components/SingleUiUx';
 
 const App = () => {
   const locomotiveScroll = new LocomotiveScroll();
 
   return (
-    <div className='w-screen min-h-screen overflow-x-hidden bg-[#FCFCFC]'>
+    <div className='animate__animated animate__fadeIn w-screen min-h-screen overflow-x-hidden bg-[#FCFCFC]'>
         <Nav />
         <Routes>
 
@@ -28,26 +36,56 @@ const App = () => {
               <Footer />
             </>
           }/>
+
           <Route path='/work' element={<>
             <AllWork />
-            <AllContent/>
+            <AllFrontend/>
+            <AllBackend/>
+            <AllMern/>
+            <Alluiux/>
             <Footer/>
           </> }/>
+
           <Route path='/work/frontend' element={<>
             <AllWork />
-            <Homepage/>
+            <AllFrontend />
             <Footer/>
-
           </> }/>
+
+          <Route path='/work/frontend/singlefrontend/:frontendid' element={<>
+            <SingleFrontend />
+          </> }/>
+
+
+          <Route path='/work/backend' element={<>
+            <AllWork />
+            <AllBackend />
+            <Footer/>
+          </> }/>
+
+          <Route path='/work/backend/singlebackend/:backendid' element={<>
+            <SingleBackend/>
+          </> }/>
+
+
           <Route path='/work/mern' element={<>
             <AllWork />
+            <AllMern/>
             <Footer/>
-
           </> }/>
+
+          <Route path='/work/mern/singlemern/:mernid' element={<>
+            <SingleMern/>
+          </> }/>
+
           <Route path='/work/uiux' element={<>
             <AllWork />
-            <Homepage/>
+            <Alluiux/>
             <Footer/>
+          </> }/>
+
+          <Route path='/work/uiux/singleuiux/:uiuxid' element={<>
+            <SingleUiUx/>
           </> }/>
 
           <Route path='/about' element={<>
@@ -55,14 +93,15 @@ const App = () => {
             <Footer/>
           </>
           }/>
+          
           <Route path='/contact' element={<>
             <Socials />
             <Footer />
           </>
-          
           }/>
 
           <Route path='*' element={<NotFound/>} />
+
         </Routes>
     </div>
   )

@@ -10,6 +10,9 @@
     font-family: gilroy , sans-serif;
     overflow-x: hidden;
     color: #1F2024;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #eee;
+
 }
 
 @layer utilities {
@@ -22,4 +25,24 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
   }
+}
+
+/* For WebKit browsers like Chrome and Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #333;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+
+.karona {
+    --animate-duration: 2s;
+}
+.nah {
+    --animate-duration: .5s;
 }

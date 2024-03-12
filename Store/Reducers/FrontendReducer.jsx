@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
-    AllFrontend:null,
-    SingleFrontend:null,
+    allfrontend:null,
+    singlefrontend:null,
     errors:[],
 }
 
@@ -12,11 +13,11 @@ export const FrontendReducer = createSlice({
 
     reducers:{
 
-    addAllFrontend:(state,action) =>{
-    state.AllFrontend = action.payload
+    addallFrontend:(state,action) =>{
+    state.allfrontend = action.payload
     },
-    addSingleFrontend:(state,action) =>{
-    state.SingleFrontend = action.payload
+    addsinglefrontend:(state,action) =>{
+    state.singlefrontend = action.payload
     },
     iserror:(state,action) =>{
     state.errors.push(action.payload)
@@ -28,8 +29,8 @@ export const FrontendReducer = createSlice({
 })
 
 export const {
-    addAllFrontend,
-    addSingleFrontend,
+    addallFrontend,
+    addsinglefrontend,
     iserror,
     removeerror 
 } = FrontendReducer.actions

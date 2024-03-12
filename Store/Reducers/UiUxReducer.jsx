@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    AllUiUx:null,
-    SingleUiUx:null,
+    alluiux:null,
+    singleuiux:null,
     errors:[],
 }
 
@@ -11,11 +11,11 @@ export const UiUxReducer = createSlice({
     initialState,
     reducers:{
 
-    addAllUiUx:(state,action) =>{
-    state.AllUiUx = action.payload
+    addalluiux:(state,action) =>{
+    state.alluiux = action.payload
     },
-    addSingleUiUx:(state,action) =>{
-    state.SingleUiUx = action.payload
+    addsingleuiux:(state,action) =>{
+    state.singleuiux = action.payload
     },
     iserror:(state,action) =>{
     state.errors.push(action.payload)
@@ -27,8 +27,8 @@ export const UiUxReducer = createSlice({
 })
 
 export const {
-    addAllUiUx,
-    addSingleUiUx,
+    addalluiux,
+    addsingleuiux,
     iserror,
     removeerror 
 } = UiUxReducer.actions

@@ -2,15 +2,16 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Work = () => {
-    const allWorkRef = useRef(null);
-  
-    const scrollToAllWork = () => {
-      // Scroll to the "all work" element when the link is clicked
-      allWorkRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
+  const allWorkRef = useRef(null);
+
+  const scrollToAllWork = () => {
+    allWorkRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className='w-full overflow-x-hidden flex flex-col px-8 gap-16'>
         <h2 className='text-xl no-scrollbar'>Work</h2>
+          
           <div className='w-full  flex flex-col justify-center'>
 
               <div className='h-[40vh] shrink-0  w-full border-b border-[#D8DADE] px-16 flex items-center justify-between'>
@@ -57,7 +58,9 @@ const Work = () => {
                 <Link to="/work" 
                   onClick={scrollToAllWork}
                   style={{ transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out' }}
-                  className='uppercase  border-2 border-black px-8 py-4 text-sm font-black rounded-full hover:bg-[#1F2024] hover:text-[#FEFEFE]'>all work</Link>
+                  className='uppercase  border-2 border-black px-8 py-4 text-sm font-black rounded-full hover:bg-[#1F2024] hover:text-[#FEFEFE]'>
+                    all work
+                  </Link>
               </div>
 
           </div>

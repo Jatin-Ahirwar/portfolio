@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
 
   return (
-    <div className='w-full overflow-x-hidden flex flex-col  gap-16'>
+    <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col  gap-16'>
       <div className='h-[32vh]  w-full mt-16 px-8  flex flex-col justify-between'>
         <h1 className='no-scrollbar capitalize  py-4 tracking-normal font-black text-8xl'> Crafting Innovative Solutions</h1>
         <h1 className='no-scrollbar capitalize  tracking-wide italic font-thin text-7xl '>for Seamless Web Development</h1>

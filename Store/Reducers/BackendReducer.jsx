@@ -1,21 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
-    AllBackend:null,
-    SingleBackend:null,
+    allbackend:null,
+    singlebackend:null,
     errors:[],
 }
 
 export const BackendReducer = createSlice({
     name:"Backend",
     initialState,
+
     reducers:{
 
-    addAllBackend:(state,action) =>{
-    state.AllBackend = action.payload
+    addallbackend:(state,action) =>{
+    state.allbackend = action.payload
     },
-    addSingleBackend:(state,action) =>{
-    state.SingleBackend = action.payload
+    addsinglebackend:(state,action) =>{
+    state.singlebackend = action.payload
     },
     iserror:(state,action) =>{
     state.errors.push(action.payload)
@@ -27,8 +29,8 @@ export const BackendReducer = createSlice({
 })
 
 export const {
-    addAllBackend,
-    addSingleBackend,
+    addallbackend,
+    addsinglebackend,
     iserror,
     removeerror 
 } = BackendReducer.actions

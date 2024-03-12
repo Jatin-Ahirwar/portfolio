@@ -2,7 +2,7 @@ import React from 'react'
 
 const Socials = () => {
   return (
-    <div className='w-full h-screen bg-[#FEFEFE] text-[#1F2024] overflow-x-hidden flex flex-col    px-10  '>
+    <div className='animate__animated animate__fadeIn animate__slow w-full h-screen bg-[#FEFEFE] text-[#1F2024] overflow-x-hidden flex flex-col    px-10  '>
       
         <div className='h-[20vh] shrink-0 w-full border-b border-[#6D6E77]  flex items-center justify-center pr-12'>
           <div className=' w-fit  flex justify-center  gap-8 '>

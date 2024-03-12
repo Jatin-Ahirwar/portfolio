@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AllContent = () => {
-  return (
+      return (
         <div className='w-full flex flex-col justify-center'>
 
             <div className='h-[40vh] shrink-0  w-full border-b border-[#D8DADE] px-16 flex items-center justify-between'>
