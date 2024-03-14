@@ -20,7 +20,8 @@ const Homepage = () => {
                     trigger: pinnedElementRef.current,
                     pin: true,
                     start: "top -10%",
-                    end: "+=70%",
+                    end: "+=50%",
+                    // markers:true,
                     scrub: true,
                 },
             });
@@ -55,13 +56,14 @@ const Homepage = () => {
 
 
     return (
-    <div className='w-full  overflow-x-hidden flex  px-8 pt-24 max-lg'>
+    <div className='w-full max-xs:block min-h-[200vh] overflow-x-hidden flex max-sm:pt-28 max-xs:pt-10 px-8 pt-24 '>
 
-        <div className=' w-[50vw] min-h-[200vh]  flex flex-col justify-between '>
+        <div className='max-xs:w-full w-[50vw]  flex flex-col justify-between '>
             
-            <div className='h-[45vh]'>
-                <div className='no-scrollbar absolute flex flex-col justify-center '>
-                    <h1 className='text-9xl font-black py-3 overflow-hidden'>
+            <div className='max-xs:h-[35vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
+                <div className='no-scrollbar   absolute flex flex-col justify-center '>
+                    
+                    <h1 className='max-xl:text-[6.8rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
                         {text.split(" ").map((word, wordIndex) => (
                             <span key={wordIndex}>
                                 {word.split("").map((char, charIndex) => (
@@ -83,8 +85,8 @@ const Homepage = () => {
                         </span>
                     ))}                    
                     </h1>
-
-                    <h1 className='text-[6rem]  italic capitalize' >
+                                        
+                    <h1 className='z-[50] max-xs:text-[4.5rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
                     {text2.split(" ").map((word, wordIndex) => (
                         <motion.span
                             key={wordIndex}
@@ -100,8 +102,11 @@ const Homepage = () => {
                     </h1>
                 </div>
             </div>
+                
+            <img className='h-[80vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
 
-            <div className='w-full  flex justify-between pr-32'>
+
+            <div className=' w-full max-md:gap-0 max-md:justify-between max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
                         <h1 className='text-xl tracking-widest font-black'>LOCATED</h1>
                         <h1 className='text-xl tracking-widest font-black'>IN INDIA <span className='text-sm'>(ASIA)</span></h1>
@@ -113,7 +118,7 @@ const Homepage = () => {
                     </div>
             </div>
             
-            <div className='h-[18vh] flex flex-col justify-between pr-10'>
+            <div className='h-[18vh] flex flex-col  justify-between pr-10'>
                 <h1>TECHNOLOGIES I WORK WITH</h1>
                 <div className='h-[12vh] overflow-x-auto no-scrollbar flex whitespace-nowrap'>
                     {logos.map((logo, index) => (
@@ -154,7 +159,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div onClick={scrollToBottom} className='overflow-y-auto h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center  items-center  rounded-full'>
+            <div onClick={scrollToBottom} className='overflow-y-auto max-xs:my-28 max-sm:my-20  h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center  items-center  rounded-full'>
                 <div className='no-scrollbar h-1/2 w-1/2 flex flex-col justify-center items-center '>
                     <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
                     <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
@@ -176,8 +181,8 @@ const Homepage = () => {
                 </div>        
             </div>
 
-            <div className='w-full pr-12 flex justify-between pt-8 pb-24  '>
-                <p className='no-scrollbar font-normal text-lg w-3/5 tracking-normal'>
+            <div className='w-[45vw]  flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
+                <p className='no-scrollbar font-normal max-xs:text-2xl text-lg w-3/5 tracking-normal'>
                     My expertise lies in creating compelling user experiences for early-stage startups, achieved by establishing a strong link between the unique requirements of the users and the business goals of the client.
                 </p>
                 <motion.div 
@@ -196,7 +201,7 @@ const Homepage = () => {
 
         <div 
             ref={pinnedElementRef}        
-            className='page22 w-[50vw] h-[100%]  no-scrollbar  pt-48 flex justify-end '>
+            className='page22   max-xs:hidden w-[48vw] h-full  no-scrollbar  pt-48 flex justify-end '>
                 <motion.img 
                     initial={{y:"500px"}}
                     animate={{y:"0"}}
@@ -205,7 +210,7 @@ const Homepage = () => {
                         duration:1.5,
                         delay:.5
                     }}
-                    className='h-[100vh] w-[95%] object-cover object-center ' 
+                    className='h-[100vh] w-full object-cover object-center ' 
                     src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" 
                     alt="" />               
         </div>

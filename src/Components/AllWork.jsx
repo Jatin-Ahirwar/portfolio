@@ -80,16 +80,16 @@ const AllWork = () => {
 
   return (
     <div className='w-full overflow-x-hidden flex flex-col px-8 gap-16'>
-      <div className='h-[45vh]  w-full mt-16  flex flex-col justify-between'>
-        <h1 className='no-scrollbar capitalize  h-[20vh] tracking-normal font-bold text-9xl'>Crafting</h1>
-        <h1 className='no-scrollbar capitalize  tracking-wide italic font-thin text-[7.4rem] '>Exceptional Products</h1>
+      <div className=' w-full mt-16  max-sm:pt-20 flex flex-col justify-between '>
+        <h1 className='no-scrollbar capitalize  pb-4 tracking-normal font-bold max-md:text-[5.2rem]  max-xl:text-8xl text-9xl'>Crafting</h1>
+        <h1 className='no-scrollbar capitalize  max-md:text-[5rem] max-xss:leading-tight  tracking-wide italic font-thin max-xl:leading-tighter  max-xss:text-[6rem] max-xl:text-[6.5rem] text-[7.3rem] '>Exceptional Products</h1>
       </div>
 
-      <div className='navvi h-[18vh] rounded-full w-full bg-[#F3F3F3] flex items-center px-10 gap-8'>
+      <div className='navvi h-[15vh] rounded-full w-full max-md:h-[12vh] max-md:px-6 bg-[#F3F3F3] flex items-center px-8 max-md:gap-4 gap-8'>
         {links.map(({ id, label, to }) => (
           <Link
             key={id}
-            className={`h-[9vh] w-[10vw] rounded-full flex items-center justify-center uppercase tracking-wide font-bold ${
+            className={`h-[9vh] w-[10vw] max-xl:w-[12vw] max-lg:w-[14vw] max-md:w-[15vw] max-md:h-[7vh] max-md:text-sm max-sm:w-[20vw] max-sm:text-xs rounded-full flex items-center justify-center uppercase tracking-wide font-bold ${
               activeLink === id ? 'bg-[#1F2024] text-[#FCFCFC]' : 'bg-[#FCFCFC]'
             } text-xm`}
             to={to}

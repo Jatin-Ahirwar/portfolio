@@ -22,7 +22,7 @@ const AllFrontend = () => {
       
 
       return (
-        <div className='animate__animated animate__fadeIn animate__slow w-full flex flex-col justify-center '>
+        <div className='animate__animated  max-xs:gap-4  animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
             {allfrontend?.length > 0 ?
             allfrontend.map((frontend,index)=>(
               <Link 
@@ -30,17 +30,17 @@ const AllFrontend = () => {
                 onMouseEnter={() => handleHover(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 to={`/work/frontend/singlefrontend/${frontend._id}`}    
-                className='no-scrollbar hoverdiv h-[25vh] shrink-0 w-full border-b border-[#D8DADE] pl-10 pr-12 flex items-center justify-between'>
-                <div className='h-full flex flex-col justify-evenly py-6 ] '>
+                className=' no-scrollbar hoverdiv max-xs:flex-col h-[25vh]  max-xs:h-fit  white  shrink-0 w-full border-b border-[#D8DADE] max-xs:items-start max-xs:pb-6  max-xs:border-none max-xs:px-0 pl-10 pr-12 flex items-center justify-between'>
+                <div className='h-full flex flex-col justify-evenly  max-xs:gap-2 max-xs:py-4  py-6 max-xs:w-full  max-md:py-0 '>
                   <div className='p-1 px-3 w-fit  bg-[#D8DADE] flex items-center'>
                     <p className='uppercase font-medium tracking-normal text-xs'>{frontend.aboutProject}</p>
                   </div>
                   <h1 className='no-scrollbar capitalize  tracking-normal font-bold text-5xl py-2'>{frontend.projectTitle}</h1>
                 </div>
-                <h1 className='capitalize text-xm text-[#BFC6C4]'>{frontend.projectType}</h1>
-                {/* <img className='absolute z-[999999] h-[50vh] w-[60vh] object-cover object-center' 
+                <h1 className='capitalize text-xm text-[#BFC6C4] max-xs:py-4'>{frontend.projectType}</h1>
+                <img className='max-xs:flex hidden z-[999999] max-md:h-[75vh] h-[65vh] w-full object-cover object-center' 
                   src={frontend.projectPoster.url} 
-                  alt="" /> */}
+                  alt="" />
             </Link>
 
             ))
