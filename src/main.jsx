@@ -9,11 +9,9 @@ import Wrapper from '../Wrapper/Wrapper.jsx';
 import 'animate.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    // <Provider store={store}>
       <Wrapper>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Wrapper>
-    // </Provider>
 );

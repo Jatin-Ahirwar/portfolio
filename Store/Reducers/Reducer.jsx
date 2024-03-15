@@ -1,38 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     admin:null,
     errors:[],
-    isAuthenticated:false
+    isAuthenticated:false,
 }
 
 export const AdminReducer = createSlice({
-    name:"Admin",
+    name: 'admin',
     initialState,
-    reducers:{
+    reducers: {
 
-    addadmin:(state,action) =>{
+    addadmin: (state,action) =>{
     state.admin = action.payload
     state.isAuthenticated = true
     },
-    removeadmin:(state,action) =>{
-    state.admin = null
-    state.isAuthenticated = false
-    state.admin = []
+    removeadmin: (state,action) =>{
+    state.admin = null,
+    state.isAuthenticated = false,
+    state.errors = []
     },
-    iserror:(state,action) =>{
+
+    iserror: (state,action) =>{
     state.errors.push(action.payload)
     },
-    removeerror:(state,action) =>{
-    state.errors =[]
-    }
-  }
+
+    removeerror: (state,action) =>{
+        state.errors = []
+    },
+  },
+  
 })
 
-export const {
-    addadmin,
-    removeadmin,
-    iserror,
+export const { 
+    addadmin ,
+    removeadmin , 
+    iserror , 
     removeerror 
 } = AdminReducer.actions
 

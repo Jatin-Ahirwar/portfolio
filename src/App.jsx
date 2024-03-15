@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from './Components/Nav'
 import './index.css'; 
 import { Route, Routes } from 'react-router-dom';
@@ -19,8 +19,17 @@ import SingleFrontend from './Components/SingleFrontend';
 import SingleBackend from './Components/SingleBackend';
 import SingleMern from './Components/SingleMern';
 import SingleUiUx from './Components/SingleUiUx';
+import SignIn from './Components/SignIn';
+import { useDispatch } from 'react-redux';
+import { asynccurrentadmin } from '../Store/Actions/Actions';
+import Create from './Components/Create';
 
 const App = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(asynccurrentadmin())
+  },[])
+
   const locomotiveScroll = new LocomotiveScroll();
 
   return (
@@ -28,7 +37,14 @@ const App = () => {
         <Nav />
         <Routes>
 
+          <Route path='/myportfolio/signin' element={<>
+            <SignIn/>
+            <Footer />
+            </>
+          }/>
+
           <Route path='/' element={<>
+              <Create />
               <Homepage />
               <Work />
               <Templetes />
