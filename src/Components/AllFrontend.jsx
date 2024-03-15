@@ -22,7 +22,7 @@ const AllFrontend = () => {
       
 
       return (
-        <div className='animate__animated  max-xs:gap-4  animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
+        <div className='animate__animated  max-xs:gap-4 max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
             {allfrontend?.length > 0 ?
             allfrontend.map((frontend,index)=>(
               <Link 
@@ -38,7 +38,7 @@ const AllFrontend = () => {
                   <h1 className='no-scrollbar capitalize  tracking-normal font-bold text-5xl py-2'>{frontend.projectTitle}</h1>
                 </div>
                 <h1 className='capitalize text-xm text-[#BFC6C4] max-xs:py-4'>{frontend.projectType}</h1>
-                <img className='max-xs:flex hidden z-[999999] max-md:h-[75vh] h-[65vh] w-full object-cover object-center' 
+                <img className='max-xs:flex max-phone:h-[40vh] hidden z-[999999] max-md:h-[75vh] h-[65vh] w-full object-cover object-center' 
                   src={frontend.projectPoster.url} 
                   alt="" />
             </Link>

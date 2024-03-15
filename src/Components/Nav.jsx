@@ -60,15 +60,15 @@ const Nav = () => {
 
   return (    
     <div className="max-sm:fixed z-50 w-[100%] h-[10vh] flex items-center justify-between px-10 bg-[#FCFCFC]">
-      <Link className='flex flex-col items-end border border-zinc-500 px-3' to="/">
+      <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='flex flex-col items-end border border-zinc-500 px-3' to="/">
         {["JATIN", "AHIRWAR"].map((item, index) => (
           <p key={index} className='text-sm'>{item}</p>
         ))}
       </Link>
-      <div className='animate__animated max-sm:hidden max-sm:h-[95vh] max-sm:flex-col max-sm:justify-start max-sm:pt-20 max-sm:items-center max-sm:z-[9] max-sm:fixed max-sm:w-full max-sm:top-16 max-sm:left-0 bg-[#FCFCFC] rightnav flex justify-between max-sm:gap-0 gap-10' ref={rightNavRef}>
-        <Link className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/work">work</Link>
-        <Link className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/about">about</Link>
-        <Link className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/contact">contact</Link>
+      <div className='animate__animated max-sm:hidden   max-phone:pt-32 max-phone:top-20 max-sm:h-[95vh] max-sm:flex-col max-sm:justify-start max-sm:pt-20 max-sm:items-center max-sm:z-[9] max-sm:fixed max-sm:w-full max-sm:top-16 max-sm:left-0 bg-[#FCFCFC] rightnav flex justify-between max-sm:gap-0 gap-10' ref={rightNavRef}>
+        <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/work">work</Link>
+        <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/about">about</Link>
+        <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='max-sm:text-7xl max-sm:font-bold max-sm:capitalize max-sm:py-10 max-sm:w-full flex max-sm:justify-center border-b border-black uppercase' to="/contact">contact</Link>
       </div>
 
       <div onClick={openNavHandler} ref={menuRef} className='transition-all openicon max-sm:flex uppercase bg-black text-[#FEFEFE] py-2 px-4 tracking-widest rounded-tr-2xl rounded-bl-2xl hidden'>

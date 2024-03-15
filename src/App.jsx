@@ -8,7 +8,6 @@ import Templetes from './Components/Templetes';
 import Footer from './Components/Footer';
 import AllWork from './Components/AllWork';
 import LocomotiveScroll from 'locomotive-scroll';
-import AllContent from './Components/AllContent';
 import About from './Components/About';
 import Socials from './Components/Socials';
 import NotFound from './Components/NotFound';
@@ -54,6 +53,7 @@ const App = () => {
 
           <Route path='/work/frontend/singlefrontend/:frontendid' element={<>
             <SingleFrontend />
+            <Footer/>
           </> }/>
 
 
@@ -65,6 +65,8 @@ const App = () => {
 
           <Route path='/work/backend/singlebackend/:backendid' element={<>
             <SingleBackend/>
+            <Footer/>
+
           </> }/>
 
 
@@ -76,6 +78,8 @@ const App = () => {
 
           <Route path='/work/mern/singlemern/:mernid' element={<>
             <SingleMern/>
+            <Footer/>
+
           </> }/>
 
           <Route path='/work/uiux' element={<>
@@ -86,6 +90,8 @@ const App = () => {
 
           <Route path='/work/uiux/singleuiux/:uiuxid' element={<>
             <SingleUiUx/>
+            <Footer/>
+
           </> }/>
 
           <Route path='/about' element={<>

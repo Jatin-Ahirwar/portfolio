@@ -6,6 +6,7 @@ export default {
         screens: {
           'xs': '1080px',
           'xss': '880px',
+          'phone': '550px',
         },
       },
   },
