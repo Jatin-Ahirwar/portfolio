@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncAllMern } from '../../Store/Actions/MernActions.jsx'
+import Create from './Create.jsx'
 
 
 const AllMern = () => {
@@ -16,6 +17,15 @@ const AllMern = () => {
         setHoveredIndex(index);
         console.log("Hovered index:", index);
       };
+      const [uploadcontent, setuploadcontent] = useState(false)
+
+      const ClickHandler = ()=>{
+        setuploadcontent(prev => !prev)
+      }
+
+
+      const { isAuthenticated } = useSelector((state) => state.Admin);
+
 
 
       const { AllMern } = useSelector((state) => state.Mern);
@@ -23,6 +33,8 @@ const AllMern = () => {
 
       return (
         <div className='animate__animated  max-xs:gap-4  max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
+            {uploadcontent === true && <Create projecttype={"mern"}/>}
+            
             {AllMern?.length > 0 ?
             AllMern.map((Mern,index)=>(
               <Link 
@@ -47,6 +59,17 @@ const AllMern = () => {
             :  
               "no"
             }   
+            
+            {
+              isAuthenticated ? 
+            
+              <div className='flex justify-center py-6'>
+                <img onClick={ClickHandler} className='w-[10vh] rotate-45 cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
+              </div>              
+              :
+              ""
+            }
+
         </div>  
     )
 }

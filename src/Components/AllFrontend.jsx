@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncAllFrontend } from '../../Store/Actions/FrontendActions.jsx'
+import Create from './Create.jsx'
 // import Create from './Create.jsx'
 
 
@@ -23,12 +24,13 @@ const AllFrontend = () => {
       }
 
       const { allfrontend } = useSelector((state) => state.Frontend);
+      const { isAuthenticated } = useSelector((state) => state.Admin);
       
 
       return (
         <div className='animate__animated  max-xs:gap-4 max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
-            {/* {uploadcontent === true && <Create imageType={"frontend"}/>} */}
-          
+            {uploadcontent === true && <Create projecttype={"frontend"}/>}
+            {/* <Create/> */}
             {allfrontend?.length > 0 ?
             allfrontend.map((frontend,index)=>(
               <Link 
@@ -54,9 +56,18 @@ const AllFrontend = () => {
               "no"
             }  
             
-            <div className='flex justify-center py-6'>
-              <img onClick={ClickHandler} className='w-[10vh] rotate-45 cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
-            </div>
+            {
+              isAuthenticated ? 
+            
+              <div className='flex justify-center py-6'>
+                <img onClick={ClickHandler} className='w-[10vh] rotate-45 cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
+              </div>
+              
+              :
+              
+              ""
+            }
+
 
 
         </div>  

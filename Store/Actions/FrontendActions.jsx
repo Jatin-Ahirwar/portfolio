@@ -11,9 +11,9 @@ export const asyncAllFrontend = () => async(dispatch,getstate) =>{
     }
 }
 
-export const asyncCreateFrontend = (frontendid) => async(dispatch,getstate) =>{
+export const asyncCreateFrontend = (content) => async(dispatch,getstate) =>{
     try {
-        const { data } = await axios.post(`/CreateFrontend` , frontendid)
+        const { data } = await axios.post(`/CreateFrontend` , content)
         dispatch(asyncAllFrontend())
         console.log(data)
     } catch (error) {

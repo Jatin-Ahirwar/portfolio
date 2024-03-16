@@ -1,402 +1,273 @@
-import React, { useEffect, useRef, useState } from 'react';
-import "./Upload.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import Spin from './Spin.jsx';
-import { asyncCreateFrontend } from '../../Store/Actions/FrontendActions.jsx';
-import { asyncCreateBackend } from '../../Store/Actions/BackendActions.jsx';
-import { asyncCreateMern } from '../../Store/Actions/MernActions.jsx';
-import { asyncCreateUiux } from '../../Store/Actions/UiuxActions.jsx';
+// import React, { useEffect, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { asyncCreateFrontend } from '../../Store/Actions/FrontendActions';
 
-const Create = ({imageType }) => {
-    const [Loading, setLoading] = useState(false);
-    const [projectTitle, setprojectTitle] = useState("")
-    const [aboutProject, setaboutProject] = useState("")
-    const [projectName, setprojectName] = useState("")
-    const [projectType, setprojectType] = useState("")
-    const [github, setgithub] = useState("")
-    const [linkedin, setlinkedin] = useState("")
-    const [deployement, setdeployement] = useState("")
-    const [projectPoster, setprojectPoster] = useState("")
-    const [projectVideo, setprojectVideo] = useState("")
-    const [IsVisible, setIsVisible] = useState(true);
-    const [selectedfiles, setselectedfiles] = useState([]);
-    const [trailerposter, setselectedposter] = useState("");
-    const [trailervideo, setselectedteaser] = useState("");
-    const { isAuthenticated } = useSelector((state) => state.Admin);
-    const fileInputRef = useRef(null);
-    const posterInputRef = useRef(null);
-    const teaserInputRef = useRef(null);
-    const dispatch = useDispatch();
-    
-    useEffect(()=>{
-        console.log(imageType)
-    },[])
-    
-    const handleFileChange = (e) => {
-        const newFiles = Array.from(e.target.files);
-    
-        // Check if any file is selected
-        if (newFiles.length === 0) {
-            setselectedfiles((prevFiles) => [...prevFiles]);
-            return;
-        }
-    
-        // Check the validity of each file individually
-        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/avif', 'image/webp'];        
-        const invalidFiles = [];
-    
-        newFiles.forEach((file) => {
-            if (!allowedTypes.includes(file.type)) {
-                invalidFiles.push(file.name);
-            }
-        });
-    
-        if (invalidFiles.length > 0) {
-            toast.error(`Invalid file type. Please select valid file types for: ${invalidFiles.join(', ')}.`);
-            setselectedfiles((prevFiles) => [...prevFiles]);
-            return;
-        }
-    
-        setselectedfiles((prevFiles) => [...prevFiles, ...newFiles]);
-    };
-            
-    const handlePosterChange = (e) => {
-        const files = e.target.files;
+// const Create = ({projecttype}) => {
+//   const [projectTitle, setProjectTitle] = useState('');
+//   const [aboutProject, setAboutProject] = useState('');
+//   const [projectType, setProjectType] = useState('');
+//   const [projectName, setProjectName] = useState('');
+//   const [githubLink, setGithubLink] = useState('');
+//   const [linkedinLink, setLinkedinLink] = useState('');
+//   const [deploymentLink, setDeploymentLink] = useState('');
+//   const [projectPoster, setProjectPoster] = useState(null);
+//   const [projectVideo, setProjectVideo] = useState(null);
+//   const [images, setImages] = useState([]);
+//   const { isAuthenticated } = useSelector((state)=>state.Admin)  
+//   const dispatch = useDispatch()
 
-        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/avif', 'image/webp'];
-        const isImageFile = allowedTypes.includes(files[0].type);
+//   const handleFileChange = (event, type) => {
+//     const files = event.target.files;
+//     switch (type) {
+//       case 'projectPoster':
+//         setProjectPoster(files[0]);
+//         break;
+//       case 'projectVideo':
+//         setProjectVideo(files[0]);
+//         break;
+//       case 'images':
+//         setImages([...images, ...files]);
+//         break;
+//       default:
+//         break;
+//     }
+//   };
 
-        if (!isImageFile) {
-            toast.error("Invalid file type. Please select a valid Image file type PNG , JPG , JPEG , SVG , AVIF , WEBP.");
-            setselectedteaser("");
-            return;
-        }
+//   const handleCut = (type) => {
+//     switch (type) {
+//       case 'projectPoster':
+//         setProjectPoster(null);
+//         break;
+//       case 'projectVideo':
+//         setProjectVideo(null);
+//         break;
+//       case 'images':
+//         setImages([]);
+//         break;
+//       default:
+//         break;
+//     }
+//   };
 
-        setselectedposter(files);
-    };
+//   const handleSubmit = () => {
+//     const content = {
+//         projectTitle,
+//         aboutProject,
+//         projectType,
+//         projectName,
+//         githubLink,
+//         linkedinLink,
+//         deploymentLink,
+//         projectPoster,
+//         projectVideo,
+//         images  
+//     }
+//     if(isAuthenticated &&  projecttype === "frontend"){
+//         dispatch(asyncCreateFrontend(content))
+//     }
+//   };
 
-    const handleTeaserChange = (e) => {
-        const files = e.target.files;
-
-        // Check if any file is selected
-        if (files.length === 0) {
-            setselectedteaser("");
-            return;
-        }
-
-        // Check if the selected file is a video file (you can adjust the allowed file types as needed)
-        const allowedTypes = ["video/mp4"];
-        const isVideoFile = allowedTypes.includes(files[0].type);
-
-        if (!isVideoFile) {
-            toast.error("Invalid file type. Please select a valid video file type (MP4).");
-            setselectedteaser("");
-            return;
-        }
-
-        setselectedteaser(files);
-    };
-    
-    const handleBoxMainClick = () => {
-        if(isAuthenticated){
-            if (fileInputRef && fileInputRef.current) {
-                fileInputRef && fileInputRef.current.click();
-            }
-        }
-        else{
-            toast.error("Please login to access the resource !")
-        }
-    };
-
-    const handleposterClick = () => {
-        if(isAuthenticated){
-            if (posterInputRef && posterInputRef.current) {
-                posterInputRef && posterInputRef.current.click();
-            }
-        }
-        else{
-            toast.error("Please login to access the resource !")
-        }
-    };
-
-    const handleteaserClick = () => {
-        if(isAuthenticated){
-            if (teaserInputRef && teaserInputRef.current) {
-                teaserInputRef && teaserInputRef.current.click();
-            }
-        }
-        else{
-            toast.error("Please login to access the resource !")
-        }
-    };
-
-    const handleRemoveFile = (index) => {
-        const updatedFiles = [...selectedfiles];
-        updatedFiles.splice(index, 1);
-        setselectedfiles(updatedFiles);
-    };
-
-    const PreweddingHandler = async (e) => {
-        e.preventDefault();
-
-        if (!trailerposter.length ) {
-            toast.error('Please select poster to upload.');
-            return;
-        }
-
-        if (!trailervideo.length) {
-            toast.error('Please select teaser to upload.');
-            return;
-        }
-        if (!selectedfiles.length) {
-            toast.error('Please select images to upload.');
-            return;
-        }
-    
-        const content = {
-            aboutProject,
-            projectTitle,
-            projectName,
-            projectType,
-            github,
-            linkedin,
-            deployement,
-            images,
-            projectPoster,
-            projectVideo
-        };
-    
-        setLoading(true);
-        console.log(content)
+//   return (
+//     <div className="container mx-auto">
+//       <div className="mt-8">
+//         <label htmlFor="projectTitle" className="block mb-2">Project Title:</label>
+//         <input type="text" id="projectTitle" className="border p-2 mb-4 w-full" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} />
         
-        if (isAuthenticated) {
-            const formData = new FormData();
-    
-            // Append text data to formData
-            Object.entries(content).forEach(([key, value]) => {
-                formData.append(key, value);
-            });
-    
-            // Append files to formData
-            formData.append('posterimage', trailerposter[0]);
-            formData.append('teaser', trailervideo[0]);
-            for (const file of selectedfiles) {
-                formData.append('images', file);
-            }    
+//         <label htmlFor="aboutProject" className="block mb-2">About Project:</label>
+//         <textarea id="aboutProject" rows="4" className="border p-2 mb-4 w-full" value={aboutProject} onChange={(e) => setAboutProject(e.target.value)}></textarea>
+        
+//         <label htmlFor="projectType" className="block mb-2">Project Type:</label>
+//         <input type="text" id="projectType" className="border p-2 mb-4 w-full" value={projectType} onChange={(e) => setProjectType(e.target.value)} />
+        
+//         <label htmlFor="projectName" className="block mb-2">Project Name:</label>
+//         <input type="text" id="projectName" className="border p-2 mb-4 w-full" value={projectName} onChange={(e) => setProjectName(e.target.value)} />
+        
+//         <label htmlFor="githubLink" className="block mb-2">GitHub Link:</label>
+//         <input type="text" id="githubLink" className="border p-2 mb-4 w-full" value={githubLink} onChange={(e) => setGithubLink(e.target.value)} />
+        
+//         <label htmlFor="linkedinLink" className="block mb-2">LinkedIn Link:</label>
+//         <input type="text" id="linkedinLink" className="border p-2 mb-4 w-full" value={linkedinLink} onChange={(e) => setLinkedinLink(e.target.value)} />
+        
+//         <label htmlFor="deploymentLink" className="block mb-2">Deployment Link:</label>
+//         <input type="text" id="deploymentLink" className="border p-2 mb-4 w-full" value={deploymentLink} onChange={(e) => setDeploymentLink(e.target.value)} />
+        
+//         <label htmlFor="projectPoster" className="block mb-2">Project Poster:</label>
+//         {projectPoster && (
+//           <div className="flex items-center mb-4">
+//             <img src={URL.createObjectURL(projectPoster)} alt="Project Poster" className="w-20 h-20 object-cover mr-2" />
+//             <button className="text-red-600 hover:text-red-800" onClick={() => handleCut('projectPoster')}>
+//               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 1 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 1 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
+//               </svg>
+//             </button>
+//           </div>
+//         )}
+//         {!projectPoster && (
+//           <input type="file" id="projectPoster" accept="image/*" className="mb-4" onChange={(e) => handleFileChange(e, 'projectPoster')} />
+//         )}
 
-            if (imageType === 'frontend') {
-                console.log(content)
-                // await dispatch(asyncCreateFrontend(formData));
-            }
-            else if (imageType === 'backend') {
-                await dispatch(asyncCreateBackend(formData));
-            } 
-            else if (imageType === 'mern') {
-                await dispatch(asyncCreateMern(formData));
-            } 
-            else if (imageType === 'uiux') {
-                await dispatch(asyncCreateUiux(formData));
-            } 
-        } else {
-            toast.error("Please log in to access the resource !");
-        }
-        setLoading(false);
-        setselectedfiles([]);
-        fileInputRef.current.value = '';
-        setIsVisible(false);
-    };
+//         <label htmlFor="projectVideo" className="block mb-2">Project Video:</label>
+//         {projectVideo && (
+//           <div className="flex items-center mb-4">
+//             <video src={URL.createObjectURL(projectVideo)} controls className="w-20 h-20 object-cover mr-2"></video>
+//             <button className="text-red-600 hover:text-red-800" onClick={() => handleCut('projectVideo')}>
+//               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 1 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 1 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
+//               </svg>
+//             </button>
+//           </div>
+//         )}
+//         {!projectVideo && (
+//           <input type="file" id="projectVideo" accept="video/*" className="mb-4" onChange={(e) => handleFileChange(e, 'projectVideo')} />
+//         )}
 
-    const handleClose = () => {
-        setIsVisible(false);
-        setselectedfiles([]);
-        setselectedposter("")
-        setselectedteaser("")
-    };
+//         <label htmlFor="images" className="block mb-2">Additional Images:</label>
+//         <div className="flex flex-wrap mb-4">
+//           {images.map((image, index) => (
+//             <div key={index} className="flex items-center mb-2 mr-2">
+//               <img src={URL.createObjectURL(image)} alt={`Additional Image ${index}`} className="w-20 h-20 object-cover mr-2" />
+//               <button className="text-red-600 hover:text-red-800" onClick={() => handleCut('images')}>
+//                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                   <path fillRule="evenodd" d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 1 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 1 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+//             </div>
+//           ))}
+//         </div>
+//         <input type="file" id="images" accept="image/*" className="mb-4" multiple onChange={(e) => handleFileChange(e, 'images')} />
+        
+//         <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={handleSubmit}>Submit</button>
+//       </div>
+//     </div>
+//   );
+// };
 
-    if (!IsVisible) {
-        return null; // Render nothing when the component is not visible
+// export default Create;
+
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncCreateFrontend } from '../../Store/Actions/FrontendActions';
+import { asyncCreateBackend } from '../../Store/Actions/BackendActions';
+import { asyncCreateMern } from '../../Store/Actions/MernActions';
+import { asyncCreateUiux } from '../../Store/Actions/UiuxActions';
+
+const Create = ({ projecttype }) => {
+  const [projectTitle, setProjectTitle] = useState('');
+  const [aboutProject, setAboutProject] = useState('');
+  const [projectType, setProjectType] = useState('');
+  const [projectName, setProjectName] = useState('');
+  const [githubLink, setGithubLink] = useState('');
+  const [linkedinLink, setLinkedinLink] = useState('');
+  const [deploymentLink, setDeploymentLink] = useState('');
+  const [projectPoster, setProjectPoster] = useState(null);
+  const [projectVideo, setProjectVideo] = useState(null);
+  const [images, setImages] = useState([]);
+  const { isAuthenticated } = useSelector((state)=>state.Admin)  
+  const dispatch = useDispatch()
+
+  
+  const handleFileChange = (event, type) => {
+    const files = event.target.files;
+    switch (type) {
+      case 'projectPoster':
+        setProjectPoster(files[0]);
+        break;
+      case 'projectVideo':
+        setProjectVideo(files[0]);
+        break;
+      case 'images':
+        setImages([...images, ...files]);
+        break;
+      default:
+        break;
     }
+  };
 
-    return (
-        <>
-            <div className="overlayy">
-                <div className='upload'>
-                    <div className='closingwrapper'>
-                        <h3 style={{textTransform:"capitalize"}}>Create {imageType && imageType}</h3>
-                        <img className='closeeicon' onClick={handleClose} src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
-                    </div>
+  const handleCut = (type) => {
+    switch (type) {
+      case 'projectPoster':
+        setProjectPoster(null);
+        break;
+      case 'projectVideo':
+        setProjectVideo(null);
+        break;
+      case 'images':
+        setImages([]);
+        break;
+      default:
+        break;
+    }
+  };
 
-                    <div className='uploadcenterdiv'>                        
-                        <div className="no-scrollbar uploadleft">
-                            
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>Project Name<span> (required)</span></label>
-                                <input onChange={(e)=>{setprojectName(e.target.value)}} className='input' required type="text" />
-                            </div>                                
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append('projectTitle', projectTitle);
+    formData.append('aboutProject', aboutProject);
+    formData.append('projectType', projectType);
+    formData.append('projectName', projectName);
+    formData.append('githubLink', githubLink);
+    formData.append('linkedinLink', linkedinLink);
+    formData.append('deploymentLink', deploymentLink);
+    formData.append('projectPoster', projectPoster);
+    formData.append('projectVideo', projectVideo);
+    // images.forEach((image, index) => {
+    //   formData.append("images[]", image);
+    // });
+    for (const file of images) {
+        formData.append('images', file);
+    }    
 
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>Project Title<span> (required)</span></label>
-                                <input onChange={(e)=>{setprojectTitle(e.target.value)}} className='input' required type="text" />
-                            </div>
+    if(isAuthenticated &&  projecttype === "frontend"){
+        await  dispatch(asyncCreateFrontend(formData))
+    }    
+    else if(isAuthenticated &&  projecttype === "backend"){
+        await  dispatch(asyncCreateBackend(formData))
+    }    
+    else if(isAuthenticated &&  projecttype === "mern"){
+        await  dispatch(asyncCreateMern(formData))
+    }    
+    else if(isAuthenticated &&  projecttype === "uiux"){
+        await  dispatch(asyncCreateUiux(formData))
+    }    
+  };
 
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>Project Type<span> (required)</span></label>
-                                <input onChange={(e)=>{setprojectType(e.target.value)}} className='input' required type="text" />
-                            </div>                                
-
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>About Project <span> (required)</span></label>
-                                <input onChange={(e)=>{setaboutProject(e.target.value)}} className='input' required type="text" />
-                            </div>
-
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>Github Link<span> (required)</span></label>
-                                <input onChange={(e)=>{setgithub(e.target.value)}} className='input' required type="text" />
-                            </div>
-
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>LinkedIN Link<span> (required)</span></label>
-                                <input onChange={(e)=>{setlinkedin(e.target.value)}} className='input' required type="text" />
-                            </div>                                
-
-                            <div className='upload-input-wrapper'>
-                                <label className='label no-scrollbar'>Deployement Link<span> (required)</span></label>
-                                <input onChange={(e)=>{setdeployement(e.target.value)}} className='input' required type="text" />
-                            </div>
-
-                        </div>
-
-                        <div className="no-scrollbar uploadright">
-                            <div className='uploadmain' onClick={handleposterClick}>
-                                <img className='uploadicon' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
-                                <h3>Upload Poster Image</h3>
-                            </div>                  
-                      
-                            {trailerposter && (
-                                <div className='files' >
-                                    <h3 style={{ fontWeight: "500" }}>{trailerposter[0].name}</h3>
-                                    <img
-                                        className='removefile'
-                                        src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png"
-                                        alt=""
-                                        onClick={() => setselectedposter("")} // Handle removal as needed
-                                    />
-                                </div>
-                            )}
-
-                            <div className='uploadmain' onClick={handleteaserClick}>
-                                <img className='uploadicon' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
-                                {
-                                    imageType === "trailer" ?
-                                        <h3>Upload Trailer Video</h3>
-                                    :
-                                    <h3>Upload Teaser Video</h3>
-                                }
-                                
-                            </div>
-
-                            {trailervideo && (
-                                <div className='files' >
-                                    <h3 style={{ fontWeight: "500" }}>{trailervideo[0].name}</h3>
-                                    <img
-                                        className='removefile'
-                                        src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png"
-                                        alt=""
-                                        onClick={() => setselectedteaser("")} // Handle removal as needed
-                                    />
-                                </div>
-                            )}    
-
-                            {
-                                imageType != "trailer" && imageType != "stories"   ?
-                                <>
-                                    <div className='uploadmain' onClick={handleBoxMainClick}>
-                                        <img className='uploadicon' src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png" alt="" />
-                                        <h3>Upload Images</h3>
-                                    </div>                  
-                                    <div className='btmline'></div>
-                                    <div className='filesdiv'>
-                                            {
-                                                selectedfiles?.map((file, index) => (
-                                                    <div className='files' key={index}>
-                                                        <h3 style={{fontWeight:"500"}}>{file.name}</h3>
-                                                        <img
-                                                            className='removefile'
-                                                            src="https://cdn-icons-png.flaticon.com/512/2920/2920658.png"
-                                                            alt=""
-                                                            onClick={() => handleRemoveFile(index)}
-                                                        />
-                                                    </div>
-                                                ))
-                                            }
-                                            {
-                                                selectedfiles.length === 0 ? 
-                                                    <div className='files'>
-                                                        <h3 style={{fontWeight:"500"}}>No Images Selected</h3>
-                                                    </div>
-                                                
-                                                : 
-                                                ""
-                                            }
-                                            
-                                    </div>
-                                </>
-                                :
-                                ""
-                            }
-                            
-                        </div>
-
-                        {
-                            isAuthenticated && (
-                                <div  className='uploading'>
-                                    <input type="file" id="fileInputtt" onChange={handlePosterChange} ref={posterInputRef} style={{ display: 'none' }} />
-                                </div>
-                            )
-                        }
-
-                        {
-                            isAuthenticated && (
-                                <div  className='uploading'>
-                                    <input type="file" id="fileInputtt" onChange={handleTeaserChange} ref={teaserInputRef} style={{ display: 'none' }} />
-                                </div>
-                            )
-                        }
-
-                        {
-                            isAuthenticated && (
-                                <div  className='uploading'>
-                                    <input type="file" id="fileInputtt" onChange={handleFileChange} multiple ref={fileInputRef} style={{ display: 'none' }} />
-                                </div>
-                            )
-                        }
-
-                    </div>
-                    
-                    <div className='btn'>
-                        {
-                            imageType === "frontend" ?
-                            <button onClick={PreweddingHandler} disabled={Loading}>
-                                {Loading ? 'Uploading...' : 'Upload'}
-                            </button>
-                            :
-                            null
-                        }
-                        {Loading && (
-                            <Spin/>
-                        )}
-                    </div>                  
-                </div>
-            </div>
-        </>
-    );
-}
+  return (
+    <div className="container mx-auto">
+      <div className="mt-8">
+        <label htmlFor="projectTitle" className="block mb-2">Project Title:</label>
+        <input type="text" id="projectTitle" className="border p-2 mb-4 w-full" value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} />
+        
+        <label htmlFor="aboutProject" className="block mb-2">About Project:</label>
+        <textarea id="aboutProject" rows="4" className="border p-2 mb-4 w-full" value={aboutProject} onChange={(e) => setAboutProject(e.target.value)}></textarea>
+        
+        <label htmlFor="projectType" className="block mb-2">Project Type:</label>
+        <input type="text" id="projectType" className="border p-2 mb-4 w-full" value={projectType} onChange={(e) => setProjectType(e.target.value)} />
+        
+        <label htmlFor="projectName" className="block mb-2">Project Name:</label>
+        <input type="text" id="projectName" className="border p-2 mb-4 w-full" value={projectName} onChange={(e) => setProjectName(e.target.value)} />
+        
+        <label htmlFor="githubLink" className="block mb-2">GitHub Link:</label>
+        <input type="text" id="githubLink" className="border p-2 mb-4 w-full" value={githubLink} onChange={(e) => setGithubLink(e.target.value)} />
+        
+        <label htmlFor="linkedinLink" className="block mb-2">LinkedIn Link:</label>
+        <input type="text" id="linkedinLink" className="border p-2 mb-4 w-full" value={linkedinLink} onChange={(e) => setLinkedinLink(e.target.value)} />
+        
+        <label htmlFor="deploymentLink" className="block mb-2">Deployment Link:</label>
+        <input type="text" id="deploymentLink" className="border p-2 mb-4 w-full" value={deploymentLink} onChange={(e) => setDeploymentLink(e.target.value)} />
+        
+        <label htmlFor="projectPoster" className="block mb-2">Project Poster:</label>
+        <input type="file" id="projectPoster" accept="image/*" className="mb-4" onChange={(e) => handleFileChange(e, 'projectPoster')} />
+        
+        <label htmlFor="projectVideo" className="block mb-2">Project Video:</label>
+        <input type="file" id="projectVideo" accept="video/*" className="mb-4" onChange={(e) => handleFileChange(e, 'projectVideo')} />
+        
+        <label htmlFor="images" className="block mb-2">Additional Images:</label>
+        <input type="file" id="images" accept="image/*" className="mb-4" multiple onChange={(e) => handleFileChange(e, 'images')} />
+        
+        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={handleSubmit}>Submit</button>
+      </div>
+    </div>
+  );
+};
 
 export default Create;
-
-
-
-
-
-
