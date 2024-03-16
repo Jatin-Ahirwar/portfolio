@@ -12,6 +12,17 @@ export const asyncAllBackend = () => async(dispatch,getstate) =>{
     }
 }
 
+export const asyncCreateBackend = (backendid) => async(dispatch,getstate) =>{
+    try {
+        const { data } = await axios.post(`/CreateBackend` , backendid)
+        dispatch(asyncAllBackend())
+        console.log(data)
+    } catch (error) {
+        dispatch(iserror(error.response.data.message))
+    }
+}
+
+
 export const asyncSingleBackend = (backendid) => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post(`/findSingleBackendProjects/${backendid}`)

@@ -11,6 +11,17 @@ export const asyncAllUiux = () => async(dispatch,getstate) =>{
     }
 }
 
+export const asyncCreateUiux = (uiuxid) => async(dispatch,getstate) =>{
+    try {
+        const { data } = await axios.post(`/CreateUiUx` , uiuxid)
+        dispatch(asyncAllUiux())
+        console.log(data)
+    } catch (error) {
+        dispatch(iserror(error.response.data.message))
+    }
+}
+
+
 export const asyncSingleUiux = (uiuxid) => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post(`/findSingleUiUxProjects/${uiuxid}`)

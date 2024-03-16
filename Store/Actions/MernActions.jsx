@@ -11,6 +11,17 @@ export const asyncAllMern = () => async(dispatch,getstate) =>{
     }
 }
 
+export const asyncCreateMern = (mernid) => async(dispatch,getstate) =>{
+    try {
+        const { data } = await axios.post(`/CreateMern` , mernid)
+        dispatch(asyncAllMern())
+        console.log(data)
+    } catch (error) {
+        dispatch(iserror(error.response.data.message))
+    }
+}
+
+
 export const asyncSingleMern = (mernid) => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post(`/findSingleMernProjects/${mernid}`)
