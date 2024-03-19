@@ -15,14 +15,14 @@ const SingleMern = () => {
     useEffect(()=>{
         dispatch(asyncSingleMern(mernid))
     },[])
-
+    
     const { SingleMern } = useSelector((state)=>state.Mern)
 
 
     return (
-        <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
+        <div className='animate__animated  animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
 
-            <h1 className='no-scrollbar max-phone:text-6xl capitalize py-2 tracking-normal font-bold text-8xl'>{SingleMern?.projectName}</h1>
+            <h1 className='no-scrollbar animate__animated animate__slideInDown max-phone:text-6xl capitalize py-2 tracking-normal font-bold text-8xl'>{SingleMern?.projectName}</h1>
 
             <div className='h-[20vh] max-sm:h-full flex  max-sm:gap-6 w-full max-sm:flex-col items-center gap-10  max-sm:items-start '>
 

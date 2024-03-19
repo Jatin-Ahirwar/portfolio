@@ -22,7 +22,6 @@ import SingleUiUx from './Components/SingleUiUx';
 import SignIn from './Components/SignIn';
 import { useDispatch } from 'react-redux';
 import { asynccurrentadmin } from '../Store/Actions/Actions';
-import Create from './Components/Create';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -44,7 +43,6 @@ const App = () => {
           }/>
 
           <Route path='/' element={<>
-              {/* <Create /> */}
               <Homepage />
               <Work />
               <Templetes />

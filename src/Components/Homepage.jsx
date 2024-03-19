@@ -1,7 +1,9 @@
-import { AnimatePresence, motion , useSpring  } from 'framer-motion'
+import { AnimatePresence, motion , useSpring  , useInView } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { slideUp, opacity } from "./animation";
+
 
 const Homepage = () => {    
     gsap.registerPlugin(ScrollTrigger);
@@ -182,7 +184,7 @@ const Homepage = () => {
 
             <div className='w-[45vw] max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-0 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
                 <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full text-lg w-3/5 tracking-normal'>
-                    My expertise lies in creating compelling user experiences for early-stage startups, achieved by establishing a strong link between the unique requirements of the users and the business goals of the client.
+                    My expertise lies in full-stack development and UI/UX designing, I specialize in crafting compelling user experiences by aligning user needs with business objectives. Through a blend of technical expertise and design finesse, I deliver solutions that resonate with target audiences and drive engagement.   
                 </p>
                 <motion.div 
                     drag
