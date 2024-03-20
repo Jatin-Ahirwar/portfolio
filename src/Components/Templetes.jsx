@@ -4,13 +4,13 @@ import { asyncAllFrontend } from '../../Store/Actions/FrontendActions'
 import { asyncAllBackend } from '../../Store/Actions/BackendActions'
 import { asyncAllMern } from '../../Store/Actions/MernActions'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { asyncAllUiux } from '../../Store/Actions/UiuxActions'
+// import { asyncAllUiux } from '../../Store/Actions/UiuxActions'
 
 const Templetes = () => {
     const { allfrontend } = useSelector((state) => state.Frontend);
     const { allbackend } = useSelector((state) => state.Backend);
     const { AllMern } = useSelector((state) => state.Mern);
-    const { alluiux } = useSelector((state)=>state.UiUx)
+    // const { alluiux } = useSelector((state)=>state.UiUx)
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
@@ -33,9 +33,9 @@ const Templetes = () => {
         dispatch(asyncAllFrontend())
         dispatch(asyncAllBackend())
         dispatch(asyncAllMern())
-        dispatch(asyncAllUiux())
+        // dispatch(asyncAllUiux())
     },[])
-    
+
     return (
     <div ref={container} className=' w-full max-xs:hidden relative overflow-x-hidden flex flex-col gap-8 pt-28 pb-36'>
         
@@ -50,7 +50,7 @@ const Templetes = () => {
                     <img className='h-[80%] w-[88%] object-cover object-center' src={mern.projectPoster.url} alt="" />
                     </div>
                 ))}            
-                {
+                {/* {
                 alluiux?.map((uiux , index )=>(
                     <div key={index} 
                     
@@ -59,8 +59,7 @@ const Templetes = () => {
                     className='shrink-0 h-full w-[30vw] bg-[#D1D0D1] relative left-[-7vw] flex justify-center items-center'>
                         <img className='h-[80%] w-[88%] object-cover object-center' src={uiux.projectPoster.url} alt="" />
                     </div>
-                )) 
-            }
+                ))} */}
         </motion.div>
 
         <motion.div style={{x:x2}} className=' h-[43vh] w-[130vw] max-xl:h-[35vh] relative left-[-15vw]  whitespace-nowrap flex gap-8 overflow-x-hidden no-scrollbar'>
