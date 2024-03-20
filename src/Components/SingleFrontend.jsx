@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { asyncSingleFrontend } from '../../Store/Actions/FrontendActions.jsx';
+import Skeleton from 'react-loading-skeleton';
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const SingleFrontend = () => {  
   
@@ -20,15 +21,13 @@ const SingleFrontend = () => {
 
     const { singlefrontend } = useSelector((state)=>state.Frontend)
 
-
     return (
         <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
-
             <h1 className='no-scrollbar animate__animated animate__slideInDown max-phone:text-6xl capitalize py-2 tracking-normal font-bold text-8xl'>{singlefrontend?.projectName}</h1>
 
             <div className='h-[20vh] max-sm:h-full flex  max-sm:gap-6 w-full max-sm:flex-col items-center gap-10  max-sm:items-start '>
 
-                <div className='h-full w-1/5   max-sm:w-full  /'>
+                <div className='h-full w-1/5 max-sm:w-full '>
                     <div className='h-1/2 w-full max-sm:mb-2 max-sm:h-[5vh]  flex items-center text-[#707073] border-b-2 font-normal tracking-wide '>
                         ROLE / SERVICES
                     </div>
@@ -37,7 +36,7 @@ const SingleFrontend = () => {
                     </div>
                 </div>
 
-                <div className='h-full w-1/5  max-sm:w-full /'>
+                <div className='h-full w-1/5  max-sm:w-full '>
                     <div className='h-1/2 w-full max-sm:mb-2 max-sm:h-[5vh] flex items-center text-[#707073] border-b-2 font-normal tracking-wide '>
                         BRAND / TITLE
                     </div>
@@ -76,7 +75,7 @@ const SingleFrontend = () => {
             </div>
 
             <div className='w-full  flex flex-col gap-8'>
-                <img className='h-[100vh] max-phone:h-[40vh] w-full object-cover ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" alt="" />               
+                <img className='h-[100vh] max-phone:h-[40vh] w-full object-cover ' src={singlefrontend?.projectPoster.url} alt="" />               
                 <p className='text-2xl w-[70vw]  leading-10 tracking-wider '>{singlefrontend?.aboutProject}</p>
             </div>  
 
@@ -84,7 +83,6 @@ const SingleFrontend = () => {
             {singlefrontend?.images.map((image,index)=>(
                 <img key={index} className='h-[100vh] w-[100%] max-phone:h-[40vh] object-cover ' src={image.url} alt="" />               
             ))}
-
 
         </div>            
     )
