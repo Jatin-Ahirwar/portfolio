@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { asyncAllFrontend } from '../../Store/Actions/FrontendActions'
-import { asyncAllBackend } from '../../Store/Actions/BackendActions'
-import { asyncAllMern } from '../../Store/Actions/MernActions'
+import { asyncAllFrontend } from '../../Store/Actions/FrontendActions.jsx'
+import { asyncAllBackend } from '../../Store/Actions/BackendActions.jsx'
+import { asyncAllMern } from '../../Store/Actions/MernActions.jsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { asyncAllUiux } from '../../Store/Actions/UiuxActions'
+import { asyncAllUiux } from '../../Store/Actions/UiuxActions.jsx'
 const Templetes = () => {
     const { allfrontend } = useSelector((state) => state.Frontend);
     const { allbackend } = useSelector((state) => state.Backend);
