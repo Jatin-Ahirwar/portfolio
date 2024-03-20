@@ -6,7 +6,7 @@ const initialState = {
     errors:[],
 }
 
-export const UiuxReducer = createSlice({
+export const UiUxReducer = createSlice({
     name:"UiUx",
     initialState,
     reducers:{
@@ -31,6 +31,6 @@ export const {
     addsingleuiux,
     iserror,
     removeerror 
-} = UiuxReducer.actions
+} = UiUxReducer.actions
 
-export default UiuxReducer.reducer
+export default UiUxReducer.reducer
