@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { asyncAllFrontend } from '../../Store/Actions/FrontendActions'
 import { asyncAllBackend } from '../../Store/Actions/BackendActions'
 import { asyncAllMern } from '../../Store/Actions/MernActions'
-import { asyncAllUiux } from '../../Store/Actions/UiuxActions'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { asyncAllUiux } from '../../Store/Actions/UiuxActions'
 
 const Templetes = () => {
     const { allfrontend } = useSelector((state) => state.Frontend);
@@ -19,11 +19,8 @@ const Templetes = () => {
 
     const colors = [
         "#E1DAD6",
-        // "#E3E3E3",
-        // "#D6D7DC",
         "#21242B",
         "#D4E3EC",
-        // "#E5E0E1",
     ];
 
     const x1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -38,6 +35,7 @@ const Templetes = () => {
         dispatch(asyncAllMern())
         dispatch(asyncAllUiux())
     },[])
+    
     return (
     <div ref={container} className=' w-full max-xs:hidden relative overflow-x-hidden flex flex-col gap-8 pt-28 pb-36'>
         
