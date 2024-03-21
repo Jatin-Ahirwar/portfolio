@@ -58,7 +58,7 @@ const Homepage = () => {
 
 
     return (
-    <div className='w-full max-xs:block min-h-[200vh] max-phone:min-h-[190vh]  overflow-x-hidden flex max-sm:pt-28 max-xs:pt-10 px-8 max-phone:px-4 pt-24 '>
+    <div className='w-full  max-xs:block min-h-[200vh] max-phone:min-h-[190vh]  overflow-x-hidden flex max-sm:pt-28 max-xs:pt-10 px-8 max-phone:px-4 pt-24 '>
 
         <div className='max-xs:w-full w-[50vw]  flex flex-col justify-between '>
             
@@ -88,7 +88,7 @@ const Homepage = () => {
                     ))}                    
                     </h1>
                                         
-                    <h1 className='z-[30] max-xs:text-[4.5rem] max-phone:text-[1.7rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
+                    <h1 className='z-[30] max-xs:text-[4.5rem] max-phone:text-[1.8rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
                     {text2.split(" ").map((word, wordIndex) => (
                         <motion.span
                             key={wordIndex}
@@ -105,9 +105,9 @@ const Homepage = () => {
                 </div>
             </div>
                 
-            <img className='h-[80vh] max-phone:h-[50vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
+            <img className='h-[80vh] max-phone:h-[50vh] max-xs:flex  hidden w-[100vw] object-cover object-center ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
 
-            <div className=' w-full max-md:gap-0 max-md:justify-between max-xs:py-28 max-sm:py-20 flex gap-40  '>
+            <div className=' w-full max-md:gap-0 max-md:justify-between max-phone:py-14 max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
                         <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>LOCATED</h1>
                         <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>IN INDIA <span className='text-sm max-phone:text-[.7rem]'>(ASIA)</span></h1>
@@ -160,7 +160,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div onClick={scrollToBottom} className='overflow-y-auto max-xs:my-28 max-sm:my-20 max-phone:h-[8vh] max-phone:w-[8vh]  h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center  items-center  rounded-full'>
+            <div onClick={scrollToBottom} className='overflow-y-auto max-xs:my-28 max-sm:my-20 max-phone:h-[8vh]  max-phone:w-[8vh]  h-[10vh] w-[10vh] bg-[#ECECED] flex flex-col justify-center  items-center  rounded-full'>
                 <div className='no-scrollbar h-1/2 w-1/2 flex flex-col justify-center items-center '>
                     <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
                     <motion.i initial={{y:"0%" , opacity:.5}} animate={{y:"500%" , opacity:1}} transition={{repeat:Infinity , ease:"linear" , duration:3 }} class="ri-arrow-down-wide-fill h-2 text-2xl font-thin flex items-center  no-scrollbar py-1.5 "></motion.i>
@@ -182,7 +182,7 @@ const Homepage = () => {
                 </div>        
             </div>
 
-            <div className='w-[45vw] max-phone:px-0  max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-8 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
+            <div className='w-[45vw] max-phone:px-0  max-phone:flex-col max-phone:items-center  max-phone:gap-8 max-phone:pb-8 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
                 <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full max-phone:text-xl text-lg w-3/5 tracking-normal'>
                     My expertise lies in full-stack development and UI/UX designing, I specialize in crafting compelling user experiences by aligning user needs with business objectives. Through a blend of technical expertise and design finesse, I deliver solutions that resonate with target audiences and drive engagement.   
                 </p>
