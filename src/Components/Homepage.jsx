@@ -62,10 +62,10 @@ const Homepage = () => {
 
         <div className='max-xs:w-full w-[50vw]  flex flex-col justify-between '>
             
-            <div className='max-xs:h-[35vh] max-phone:h-[30vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
-                <div className='no-scrollbar absolute flex flex-col justify-center '>
+            <div className='max-xs:h-[35vh] max-phone:h-[25vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
+                <div className='no-scrollbar absolute flex flex-col  justify-center '>
                     
-                    <h1 className='max-xl:text-[6.8rem] max-phone:text-[4.9rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
+                    <h1 className=' max-xl:text-[6.8rem] max-phone:text-[3rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
                         {text.split(" ").map((word, wordIndex) => (
                             <span key={wordIndex}>
                                 {word.split("").map((char, charIndex) => (
@@ -105,30 +105,30 @@ const Homepage = () => {
                 </div>
             </div>
                 
-            <img className='h-[80vh] max-phone:h-[40vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
+            <img className='h-[80vh] max-phone:h-[60vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
 
             <div className=' w-full max-md:gap-0 max-md:justify-between max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
-                        <h1 className='text-xl tracking-widest font-black'>LOCATED</h1>
-                        <h1 className='text-xl tracking-widest font-black'>IN INDIA <span className='text-sm'>(ASIA)</span></h1>
+                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>LOCATED</h1>
+                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>IN INDIA <span className='text-sm'>(ASIA)</span></h1>
                     </div>
 
                     <div>
-                        <h1 className='text-xl tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
-                        <h1 className='text-xl tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
+                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
+                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
                     </div>
             </div>
             
-            <div className='h-[18vh] flex flex-col  justify-between pr-10'>
+            <div className='h-[18vh] max-phone:h-[15vh] flex flex-col  justify-between pr-10'>
                 <h1>TECHNOLOGIES I WORK WITH</h1>
-                <div className='h-[12vh]  max-phone:w-screen overflow-x-auto no-scrollbar flex whitespace-nowrap'>
+                <div className='h-[12vh] max-phone:h-[9vh]  max-phone:w-screen overflow-x-hidden no-scrollbar flex whitespace-nowrap'>
                     {logos.map((logo, index) => (
                         <motion.div
                             initial={{x:"0%"}}
                             animate={{x:"-2000%"}} 
                             transition={{repeat:Infinity , ease:"linear" , duration:10 }}
                             key={index} 
-                            className="mr-6  shrink-0 h-full w-24  flex items-center justify-center border border-solid"
+                            className="mr-6 shrink-0 h-full w-24  flex items-center justify-center border border-solid"
                         >
                             <img className='object-cover h-3/6' src={logo} alt="" />
                         </motion.div>
@@ -182,8 +182,8 @@ const Homepage = () => {
                 </div>        
             </div>
 
-            <div className='w-[45vw] max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-0 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
-                <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full text-lg w-3/5 tracking-normal'>
+            <div className='w-[45vw] bg-red-400  max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-8 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
+                <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full max-phone:text-xl text-lg w-3/5 tracking-normal'>
                     My expertise lies in full-stack development and UI/UX designing, I specialize in crafting compelling user experiences by aligning user needs with business objectives. Through a blend of technical expertise and design finesse, I deliver solutions that resonate with target audiences and drive engagement.   
                 </p>
                 <motion.div 
@@ -202,7 +202,7 @@ const Homepage = () => {
 
         <div 
             ref={pinnedElementRef}        
-            className='page22   max-xs:hidden w-[48vw] h-full  no-scrollbar  pt-48 flex justify-end '>
+            className='page22  max-xs:hidden w-[48vw] h-full  no-scrollbar  pt-48 flex justify-end '>
                 <motion.img 
                     initial={{y:"500px"}}
                     animate={{y:"0"}}
