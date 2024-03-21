@@ -59,10 +59,10 @@ const Nav = () => {
   }, []);
 
   return (    
-    <div className="max-sm:fixed z-50 w-[100%] h-[10vh] flex items-center justify-between px-10 bg-[#FCFCFC]">
-      <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='  flex flex-col items-end border border-zinc-500 px-3' to="/">
+    <div className="max-sm:fixed z-50 w-[100%]  h-[10vh] flex items-center justify-between max-phone:px-2 px-10 bg-[#FCFCFC]">
+      <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='  flex flex-col items-end border border-zinc-500 px-3 bg-slate-400' to="/">
         {["JATIN", "AHIRWAR"].map((item, index) => (
-          <p key={index} className='text-sm '>{item}</p>
+          <p key={index} className='text-sm max-phone:text-[.7rem]'>{item}</p>
         ))}
       </Link>
 
