@@ -48,7 +48,7 @@ const About = () => {
 
       <div className='mt-8 max-sm:mt-0 flex flex-col gap-12 w-full no-scrollbar px-8'>
         {/* <img className='w-screen no-scrollbar' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/6414157bbe9e525521aa7ede_IMG_7099-p-2000.webp" alt="" /> */}
-        <img className='w-screen no-scrollbar' src="https://ideogram.ai/api/images/direct/N5EaHFKeTh6BCtkHMZwVow.png" alt="" />
+        <img className='w-screen no-scrollbar' src="https://ik.imagekit.io/jatinahirwar/about%20(1).png?updatedAt=1710990972882" alt="" />
 
       <div  className='w-full  flex max-xss:justify-center justify-end '>
         <div className='w-[50%] pt-6  flex flex-col gap-4 max-xss:w-full  border-t border-black  ' >
