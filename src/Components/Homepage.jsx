@@ -62,7 +62,7 @@ const Homepage = () => {
 
         <div className='max-xs:w-full w-[50vw]  flex flex-col justify-between '>
             
-            <div className='max-xs:h-[35vh] max-phone:h-[25vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
+            <div className='max-xs:h-[35vh] max-phone:h-[17vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
                 <div className='no-scrollbar absolute flex flex-col  justify-center '>
                     
                     <h1 className=' max-xl:text-[6.8rem] max-phone:text-[2rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
@@ -88,7 +88,7 @@ const Homepage = () => {
                     ))}                    
                     </h1>
                                         
-                    <h1 className='z-[30] max-xs:text-[4.5rem] max-phone:text-[1.5rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
+                    <h1 className='z-[30] max-xs:text-[4.5rem] max-phone:text-[1.7rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
                     {text2.split(" ").map((word, wordIndex) => (
                         <motion.span
                             key={wordIndex}
@@ -105,17 +105,17 @@ const Homepage = () => {
                 </div>
             </div>
                 
-            <img className='h-[80vh] max-phone:h-[60vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
+            <img className='h-[80vh] max-phone:h-[50vh] max-xs:flex hidden w-[100vw] object-cover object-center  ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
 
             <div className=' w-full max-md:gap-0 max-md:justify-between max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
-                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>LOCATED</h1>
-                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>IN INDIA <span className='text-sm max-phone:text-[.6rem]'>(ASIA)</span></h1>
+                        <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>LOCATED</h1>
+                        <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>IN INDIA <span className='text-sm max-phone:text-[.7rem]'>(ASIA)</span></h1>
                     </div>
 
                     <div>
-                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
-                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
+                        <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
+                        <h1 className='text-xl max-phone:text-[.7rem] tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
                     </div>
             </div>
             
