@@ -65,7 +65,7 @@ const Homepage = () => {
             <div className='max-xs:h-[35vh] max-phone:h-[25vh] max-xss:h-[32vh] max-md:h-[25vh] h-[45vh]'>
                 <div className='no-scrollbar absolute flex flex-col  justify-center '>
                     
-                    <h1 className=' max-xl:text-[6.8rem] max-phone:text-[3rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
+                    <h1 className=' max-xl:text-[6.8rem] max-phone:text-[2rem] max-xs:text-[5.6rem] max-md:text-[4rem] max-sm:text-[3.5rem]  max-xss:text-[4.8rem] text-9xl font-black   overflow-hidden'>
                         {text.split(" ").map((word, wordIndex) => (
                             <span key={wordIndex}>
                                 {word.split("").map((char, charIndex) => (
@@ -88,7 +88,7 @@ const Homepage = () => {
                     ))}                    
                     </h1>
                                         
-                    <h1 className='z-[30] max-xs:text-[4.5rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
+                    <h1 className='z-[30] max-xs:text-[4.5rem] max-phone:text-[1.5rem] max-xss:text-[4rem] max-md:text-[3rem] text-[6rem] italic capitalize' >
                     {text2.split(" ").map((word, wordIndex) => (
                         <motion.span
                             key={wordIndex}
@@ -109,13 +109,13 @@ const Homepage = () => {
 
             <div className=' w-full max-md:gap-0 max-md:justify-between max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
-                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>LOCATED</h1>
-                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>IN INDIA <span className='text-sm'>(ASIA)</span></h1>
+                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>LOCATED</h1>
+                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>IN INDIA <span className='text-sm max-phone:text-[.6rem]'>(ASIA)</span></h1>
                     </div>
 
                     <div>
-                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
-                        <h1 className='text-xl max-phone:text-[1rem] tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
+                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>CURRENTLY AVAILABLE FOR</h1>
+                        <h1 className='text-xl max-phone:text-[.6rem] tracking-widest font-black'>WORK IN WORLDWIDE 🌎</h1>
                     </div>
             </div>
             
@@ -182,7 +182,7 @@ const Homepage = () => {
                 </div>        
             </div>
 
-            <div className='w-[45vw] bg-red-400  max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-8 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
+            <div className='w-[45vw] max-phone:px-0  max-phone:flex-col max-phone:items-center max-phone:gap-8 max-phone:pb-8 flex justify-between pt-8 pb-24 max-xs:pt-0 max-xs:w-full'>
                 <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full max-phone:text-xl text-lg w-3/5 tracking-normal'>
                     My expertise lies in full-stack development and UI/UX designing, I specialize in crafting compelling user experiences by aligning user needs with business objectives. Through a blend of technical expertise and design finesse, I deliver solutions that resonate with target audiences and drive engagement.   
                 </p>
