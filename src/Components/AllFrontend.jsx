@@ -38,10 +38,10 @@ const AllFrontend = () => {
                 onMouseEnter={() => handleHover(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 to={`/work/frontend/singlefrontend/${frontend._id}`}    
-                className='hover:px-[20px] hover:opacity-50 transition-all ease duration-700 no-scrollbar hoverdiv max-xs:flex-col h-[25vh]  max-xs:h-fit  white  shrink-0 w-full border-b border-[#D8DADE] max-xs:items-start max-xs:pb-6  max-xs:border-none max-xs:px-0 pl-10 pr-12 flex items-center justify-between'>
+                className='hover:px-[20px] max-phone:hover:px-0 hover:opacity-50 transition-all ease duration-700 no-scrollbar hoverdiv max-xs:flex-col h-[25vh]  max-xs:h-fit  white  shrink-0 w-full border-b border-[#D8DADE] max-xs:items-start max-xs:pb-6  max-xs:border-none max-xs:px-0 pl-10 pr-12 flex items-center justify-between'>
                 <div className='h-full flex flex-col justify-evenly  max-xs:gap-2 max-xs:py-4  py-6 max-xs:w-full  max-md:py-0 '>
                   <div className='p-1 px-3 w-fit  bg-[#D8DADE] flex items-center'>
-                    <p className='uppercase font-medium tracking-normal text-xs'>{frontend.projectTitle}</p>
+                    <p className='uppercase font-medium tracking-normal  text-xs'>{frontend.projectTitle}</p>
                   </div>
                   <h1 className='no-scrollbar capitalize  tracking-normal font-bold text-5xl py-2'>{frontend.projectName}</h1>
                 </div>

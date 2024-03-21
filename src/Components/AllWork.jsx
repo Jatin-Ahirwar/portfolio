@@ -45,7 +45,7 @@ const AllWork = () => {
         {links.map(({ id, label, to }) => (
           <Link
             key={id}
-            className={`h-[9vh] w-[10vw] max-xl:w-[12vw] max-lg:w-[14vw] max-md:w-[15vw] max-phone:h-[4vh] max-md:h-[7vh] max-md:text-sm max-sm:w-[20vw] max-sm:text-xs rounded-full flex items-center justify-center uppercase tracking-wide font-bold ${
+            className={`h-[9vh] w-[10vw] max-xl:w-[12vw] max-lg:w-[14vw] max-md:w-[15vw] max-phone:h-[4vh] max-phone:text-[.5rem] max-md:h-[7vh] max-md:text-sm max-sm:w-[20vw] max-sm:text-xs rounded-full flex items-center justify-center uppercase tracking-wide font-bold ${
               activeLink === id ? 'bg-[#1F2024] text-[#FCFCFC]' : 'bg-[#FCFCFC]'
             } text-xm`}
             to={to}

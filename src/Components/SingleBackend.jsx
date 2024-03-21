@@ -22,9 +22,9 @@ const SingleBackend = () => {
     return (
         <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
 
-            <h1 className='animate__animated animate__slideInDown no-scrollbar max-phone:text-6xl capitalize py-2 tracking-normal font-bold text-8xl'>{singlebackend?.projectName}</h1>
+            <h1 className='animate__animated animate__slideInDown no-scrollbar max-phone:text-5xl capitalize py-2 tracking-normal font-bold text-8xl  '>{singlebackend?.projectName}</h1>
 
-            <div className='h-[20vh] max-sm:h-full flex  max-sm:gap-6 w-full max-sm:flex-col items-center gap-10  max-sm:items-start '>
+            <div className='h-[20vh] max-sm:h-full flex max-sm:gap-6 w-full max-sm:flex-col items-center gap-10  max-sm:items-start '>
 
                 <div className='h-full w-1/5   max-sm:w-full  /'>
                     <div className='h-1/2 w-full max-sm:mb-2 max-sm:h-[5vh]  flex items-center text-[#707073] border-b-2 font-normal tracking-wide '>
@@ -74,13 +74,13 @@ const SingleBackend = () => {
             </div>
 
             <div className='w-full  flex flex-col gap-8'>
-                <img className='h-[100vh] max-phone:h-[40vh] w-full object-cover ' src={singlebackend?.projectPoster.url} alt="" />               
-                <p className='text-2xl w-[70vw]  leading-10 tracking-wider '>{singlebackend?.aboutProject}</p>
+                <img className='h-fit  w-full object-cover ' src={singlebackend?.projectPoster.url} alt="" />               
+                <p className='text-2xl w-[70vw] max-phone:w-full  leading-10 tracking-wider max-phone:text-sm  '>{singlebackend?.aboutProject}</p>
             </div>  
 
             
             {singlebackend?.images.map((image,index)=>(
-                <img key={index} className='h-[100vh] w-[100%] max-phone:h-[40vh] object-cover ' src={image.url} alt="" />               
+                <img key={index} className='h-fit w-full  object-cover ' src={image.url} alt="" />               
             ))}
 
 
