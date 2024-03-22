@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncAllBackend } from '../../Store/Actions/BackendActions.jsx'
 import Create from './Create.jsx'
+import Skeleton from 'react-loading-skeleton'
 
 
 const AllBackend = () => {
       const dispatch = useDispatch()
       const [hoveredIndex, setHoveredIndex] = useState(null);
       const [uploadcontent, setuploadcontent] = useState(false)
+      const [loading, setloading] = useState(true)
 
       const ClickHandler = ()=>{
         setuploadcontent(prev => !prev)
@@ -19,6 +21,7 @@ const AllBackend = () => {
 
       useEffect(()=>{
         dispatch(asyncAllBackend())
+        setloading(false)
       },[])
       
       const handleHover = (index) => {
@@ -33,7 +36,11 @@ const AllBackend = () => {
       return (
         <div className='animate__animated  max-xs:gap-4 max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
             {uploadcontent === true && <Create projecttype={"backend"}/>}
-            
+
+            {loading  && 
+              <Skeleton height={170} count={1} />            
+            }
+
             {allbackend?.length > 0 ?
             allbackend.map((Backend,index)=>(
               <Link 

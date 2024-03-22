@@ -7,10 +7,10 @@ import Wrapper from '../Wrapper/Wrapper.jsx';
 import 'animate.css'
 import ScrollToTopOnPathChange from './Components/animation.js';
 import { SkeletonTheme } from 'react-loading-skeleton';
-
+import 'react-loading-skeleton/dist/skeleton.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <SkeletonTheme baseColor="#eee" highlightColor="#cfcece">
       <Wrapper>
         <BrowserRouter >
           <ScrollToTopOnPathChange/>

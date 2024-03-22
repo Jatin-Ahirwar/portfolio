@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncAllMern } from '../../Store/Actions/MernActions.jsx'
 import Create from './Create.jsx'
+import Skeleton from 'react-loading-skeleton'
 
 
 const AllMern = () => {
       const dispatch = useDispatch()
       const [hoveredIndex, setHoveredIndex] = useState(null);
+      const [loading, setloading] = useState(true)
 
 
       useEffect(()=>{
         dispatch(asyncAllMern())
+        setloading(false)
       },[])
       
       const handleHover = (index) => {
@@ -35,7 +38,10 @@ const AllMern = () => {
       return (
         <div className='animate__animated  max-xs:gap-4  max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
             {uploadcontent === true && <Create projecttype={"mern"}/>}
-            
+            {loading  && 
+              <Skeleton height={170} count={1} />            
+            }
+
             {AllMern?.length > 0 ?
             AllMern.map((Mern,index)=>(
               <Link 

@@ -3,36 +3,42 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncAllUiux } from '../../Store/Actions/UiuxActions.jsx'
 import Create from './Create'
+import Skeleton from 'react-loading-skeleton'
 
 
 const Alluiux = () => {
-      const dispatch = useDispatch()
-      const [hoveredIndex, setHoveredIndex] = useState(null);
-      const [uploadcontent, setuploadcontent] = useState(false)
+    const dispatch = useDispatch()
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [uploadcontent, setuploadcontent] = useState(false)
+    const [loading, setloading] = useState(true)
 
-      const ClickHandler = ()=>{
-        setuploadcontent(prev => !prev)
-      }
+    const ClickHandler = ()=>{
+      setuploadcontent(prev => !prev)
+    }
 
+    const { isAuthenticated } = useSelector((state) => state.Admin);
 
-      const { isAuthenticated } = useSelector((state) => state.Admin);
-
-      useEffect(()=>{
-        dispatch(asyncAllUiux())
-      },[])
-      
-      const handleHover = (index) => {
-        setHoveredIndex(index);
-        console.log("Hovered index:", index);
-      };
+    useEffect(()=>{
+      dispatch(asyncAllUiux())
+      setloading(false)
+    },[])
+    
+    const handleHover = (index) => {
+      setHoveredIndex(index);
+      console.log("Hovered index:", index);
+    };
 
     const { alluiux } = useSelector((state)=>state.UiUx)
       
 
-      return (
+    return (
         <div className='animate__animated  max-xs:gap-4 max-phone:px-4 max-phone:pb-0 animate__fadeIn animate__slow w-full flex flex-col justify-center max-xs:py-10 max-xs:px-8 max-xs:grid  max-md:grid-cols-1  max-xs:grid-cols-2'>
             {uploadcontent === true && <Create projecttype={"uiux"}/>}
-            
+
+            {loading  && 
+              <Skeleton height={170} count={1} />            
+            }
+
             {alluiux?.length > 0 ?
             alluiux.map((Uiux,index)=>(
               <Link 
