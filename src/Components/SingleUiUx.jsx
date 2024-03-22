@@ -88,7 +88,7 @@ const SingleUiUx = () => {
             </div>
 
             <div className='w-full  flex flex-col gap-8'>
-                <img className='h-fit w-full object-cover ' src={singleuiux?.projectPoster.url} alt="" />               
+                <img className='h-fit w-full object-cover  ' src={singleuiux?.projectPoster.url} alt="" />               
                 <p className='text-2xl w-[70vw] max-phone:w-full  leading-10 tracking-wider max-phone:text-sm'>{singleuiux?.aboutProject}</p>
             </div>  
 

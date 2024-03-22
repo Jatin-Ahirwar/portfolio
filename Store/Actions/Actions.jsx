@@ -7,7 +7,7 @@ export const asynccurrentadmin = () => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post("/admin")
         dispatch(addadmin(data[0]))
-        console.log(data[0])
+        // console.log(data[0])
     } catch (error) {
         dispatch(iserror(error.response.data.message))
     }

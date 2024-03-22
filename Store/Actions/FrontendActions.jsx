@@ -5,7 +5,7 @@ export const asyncAllFrontend = () => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post("/findFrontendProjects")
         dispatch(addallFrontend(data.allFrontend))
-        console.log(data.allFrontend)
+        // console.log(data.allFrontend)
     } catch (error) {
         dispatch(iserror(error.response.data.message))
     }
@@ -15,7 +15,7 @@ export const asyncCreateFrontend = (content) => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post(`/CreateFrontend` , content)
         dispatch(asyncAllFrontend())
-        console.log(data)
+        // console.log(data)
     } catch (error) {
         dispatch(iserror(error.response.data.message))
     }
@@ -25,7 +25,7 @@ export const asyncSingleFrontend = (frontendid) => async(dispatch,getstate) =>{
     try {
         const { data } = await axios.post(`/findSingleFrontendProjects/${frontendid}`)
         dispatch(addsinglefrontend(data.singleFrontend))
-        console.log(data.singleFrontend)
+        // console.log(data.singleFrontend)
     } catch (error) {
         dispatch(iserror(error.response.data.message))
     }
