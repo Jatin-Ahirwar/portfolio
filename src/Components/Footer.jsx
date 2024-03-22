@@ -21,9 +21,9 @@ const Footer = () => {
         </a>
 
         <div className='h-[20vh] w-full max-sm:flex flex-col items-center justify-evenly hidden '>
-          <h1 className='uppercase text-xm tracking-wider   text-[#6D6E77]'>socials</h1>
-          <a href='https://www.linkedin.com/in/jatin-ahirwar-16264820b/' className='uppercase text-xm tracking-wider   text-[#FEFEFE]'>LinkedIN</a>
-          <a href='https://github.com/Jatin-Ahirwar' className='uppercase text-xm tracking-wider  text-[#FEFEFE]'>github</a>
+          <h1 className='uppercase text-xm tracking-wider text-[#6D6E77] w-full flex justify-center '>socials</h1>
+          <a href='https://www.linkedin.com/in/jatin-ahirwar-16264820b/' className='uppercase text-xm tracking-wider  w-full flex justify-center  text-[#FEFEFE]'>LinkedIN</a>
+          <a href='https://github.com/Jatin-Ahirwar' className='uppercase text-xm w-full flex justify-center  tracking-wider  text-[#FEFEFE]'>github</a>
         </div>
         
 

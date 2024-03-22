@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { asyncSingleMern } from '../../Store/Actions/MernActions.jsx';
+import Skeleton from 'react-loading-skeleton';
 
 const SingleMern = () => {
+    const [loading, setloading] = useState(false)
     const springProps = {
         type: 'spring',
         stiffness: 1000,
@@ -14,12 +16,22 @@ const SingleMern = () => {
     const { mernid } = useParams();
     useEffect(()=>{
         dispatch(asyncSingleMern(mernid))
+        .then(() => {
+            setloading(false)
+          })
+        .catch((error) => {
+            console.error('Error while dispatching asyncAllmern:', error);
+        });
     },[])
     
     const { SingleMern } = useSelector((state)=>state.Mern)
 
 
-    return (
+    return <>
+        {loading  && 
+            <Skeleton height={"100vh"} count={1} />            
+        }
+
         <div className='animate__animated  animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
 
             <h1 className='no-scrollbar animate__animated animate__slideInDown max-phone:text-5xl capitalize py-2 tracking-normal font-bold text-8xl'>{SingleMern?.projectName}</h1>
@@ -85,7 +97,7 @@ const SingleMern = () => {
 
 
         </div>            
-    )
+    </>
 }
 
 export default SingleMern

@@ -3,8 +3,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { asyncSingleBackend } from '../../Store/Actions/BackendActions';
+import Skeleton from 'react-loading-skeleton';
 
 const SingleBackend = () => {
+    const [loading, setloading] = useState(true)
     const springProps = {
         type: 'spring',
         stiffness: 1000,
@@ -14,12 +16,21 @@ const SingleBackend = () => {
     const { backendid } = useParams();
     useEffect(()=>{
         dispatch(asyncSingleBackend(backendid))
+        .then(() => {
+            setloading(false)
+          })
+        .catch((error) => {
+            console.error('Error while dispatching asyncAllBackend:', error);
+        });
     },[])
 
     const { singlebackend } = useSelector((state)=>state.Backend)
 
 
-    return (
+    return <>
+        {loading  && 
+            <Skeleton height={"100vh"} count={1} />            
+        }
         <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
 
             <h1 className='animate__animated animate__slideInDown no-scrollbar max-phone:text-5xl capitalize py-2 tracking-normal font-bold text-8xl  '>{singlebackend?.projectName}</h1>
@@ -85,7 +96,7 @@ const SingleBackend = () => {
 
 
         </div>            
-    )
+    </>
 }
 
 export default SingleBackend

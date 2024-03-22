@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { asyncSingleUiux } from '../../Store/Actions/UiuxActions';
+import Skeleton from 'react-loading-skeleton';
 
 const SingleUiUx = () => {
-
+    const [loading, setloading] = useState(true)
     const springProps = {
         type: 'spring',
         stiffness: 1000,
@@ -16,13 +17,23 @@ const SingleUiUx = () => {
     const { uiuxid } = useParams();
     useEffect(()=>{
         dispatch(asyncSingleUiux(uiuxid))
+        .then(() => {
+            setloading(false)
+          })
+        .catch((error) => {
+            console.error('Error while dispatching asyncAlluiux:', error);
+        });
     },[])
 
     
 
     const { singleuiux } = useSelector((state)=>state.UiUx)
 
-    return (
+    return <>
+        {loading  && 
+            <Skeleton height={"100vh"} count={1} />            
+        }
+
         <div className='animate__animated animate__fadeIn animate__slow w-full overflow-x-hidden flex flex-col pt-24 pb-8 px-8  max-phone:px-4 max-sm:gap-6 gap-10'>                  
 
             <h1 className='no-scrollbar animate__animated animate__slideInDown max-phone:text-5xl capitalize py-2 tracking-normal font-bold text-8xl'>{singleuiux?.projectName}</h1>
@@ -88,7 +99,7 @@ const SingleUiUx = () => {
 
 
         </div>            
-    )
+    </>
 }
 
 export default SingleUiUx

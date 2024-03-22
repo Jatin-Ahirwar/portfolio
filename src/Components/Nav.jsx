@@ -60,10 +60,8 @@ const Nav = () => {
 
   return (    
     <div className="max-sm:fixed z-50 w-[100%]  h-[10vh] flex items-center justify-between max-phone:px-2 px-10 bg-[#FCFCFC]">
-      <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='flex flex-col items-end border border-zinc-500 px-3 max-phone:px-2 ' to="/">
-        {["JATIN", "AHIRWAR"].map((item, index) => (
-          <p key={index} className='leading-4 text-sm max-phone:text-[.7rem]'>{item}</p>
-        ))}
+      <Link onClick={() => {if (window.innerWidth < 640) {closeNavHandler(); }}} className='flex flex-col   items-end border border-[#0000005f] px-3  ' to="/">
+        <img className='h-[5.5vh]  object-cover py-1' src="https://ik.imagekit.io/jatinahirwar/ja%20new.png?updatedAt=1710922364500" alt="" />
       </Link>
 
       <div className='animate__animated max-sm:hidden   max-phone:pt-32 max-phone:top-16 max-sm:h-[100vh] max-sm:flex-col max-sm:justify-start max-sm:pt-20 max-sm:items-center max-sm:z-[9] max-sm:fixed max-sm:w-full max-sm:top-16 max-sm:left-0 bg-[#FCFCFC] rightnav flex justify-between max-sm:gap-0 gap-10' ref={rightNavRef}>
