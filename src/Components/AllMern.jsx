@@ -14,7 +14,14 @@ const AllMern = () => {
 
       useEffect(()=>{
         dispatch(asyncAllMern())
-        setloading(false)
+        .then(() => {
+          setloading(false)
+        })
+        .catch((error) => {
+          console.error('Error while dispatching asyncAllFrontend:', error);
+        });
+
+
       },[])
       
       const handleHover = (index) => {
@@ -64,7 +71,7 @@ const AllMern = () => {
 
             ))
             :  
-              "no"
+              null
             }   
             
             {

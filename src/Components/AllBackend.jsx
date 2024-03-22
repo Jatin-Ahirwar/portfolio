@@ -21,7 +21,13 @@ const AllBackend = () => {
 
       useEffect(()=>{
         dispatch(asyncAllBackend())
-        setloading(false)
+        .then(() => {
+          setloading(false)
+        })
+        .catch((error) => {
+          console.error('Error while dispatching asyncAllFrontend:', error);
+        });
+
       },[])
       
       const handleHover = (index) => {
@@ -63,7 +69,7 @@ const AllBackend = () => {
 
             ))
             :  
-              "no"
+              null
             }   
             
             {

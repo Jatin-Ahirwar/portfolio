@@ -13,8 +13,13 @@ const AllFrontend = () => {
       const [loading, setloading] = useState(true)
       useEffect(()=>{
         dispatch(asyncAllFrontend())
-        setloading(false)
-      },[])
+        .then(() => {
+          setloading(false)
+        })
+        .catch((error) => {
+          console.error('Error while dispatching asyncAllFrontend:', error);
+        });
+      },[dispatch])
       
     
       const handleHover = (index) => {
@@ -61,7 +66,7 @@ const AllFrontend = () => {
 
             ))
             :  
-              "no"
+              null
             }  
             
             {
