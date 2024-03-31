@@ -105,7 +105,7 @@ const Homepage = () => {
                 </div>
             </div>
                 
-            <img className='h-[80vh] max-phone:h-[50vh] max-xs:flex  hidden w-[100vw] object-cover object-center ' src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp"  alt="" />
+            <img className='h-[80vh] max-phone:h-[50vh] max-xs:flex  hidden w-[100vw] object-cover object-center ' src='https://media.istockphoto.com/id/959957150/vector/vector-illustration-character-happy-business-man-greeting-say-hi-hello-cartoon-style-man-in.jpg?s=612x612&w=0&k=20&c=WmLtPu2PWVIcP-dAGRfcu_NhIlV1tRyhoI_p3b1kyAg='  alt="" />
 
             <div className=' w-full max-md:gap-0 max-md:justify-between max-phone:py-14 max-xs:py-28 max-sm:py-20 flex gap-40  '>
                     <div>
