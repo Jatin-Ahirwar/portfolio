@@ -212,7 +212,8 @@ const Homepage = () => {
                         delay:.5
                     }}
                     className='h-[100vh] w-full object-cover object-center ' 
-                    src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" 
+                    // src="https://assets-global.website-files.com/63b48659e1b2e861f4a64c86/641412429d689f55000edf0c_IMG_7076-p-1080.webp" 
+                    src='https://media.istockphoto.com/id/959957150/vector/vector-illustration-character-happy-business-man-greeting-say-hi-hello-cartoon-style-man-in.jpg?s=612x612&w=0&k=20&c=WmLtPu2PWVIcP-dAGRfcu_NhIlV1tRyhoI_p3b1kyAg='
                     alt="" />               
         </div>
 
