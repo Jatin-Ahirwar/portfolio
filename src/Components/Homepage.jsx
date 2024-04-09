@@ -186,7 +186,8 @@ const Homepage = () => {
                 <p className='no-scrollbar font-normal max-xs:text-2xl max-phone:w-full max-phone:text-xl text-lg w-3/5 tracking-normal'>
                     My expertise lies in full-stack development and UI/UX designing, I specialize in crafting compelling user experiences by aligning user needs with business objectives. Through a blend of technical expertise and design finesse, I deliver solutions that resonate with target audiences and drive engagement.   
                 </p>
-                <motion.div 
+                <motion.a
+                    href='https://drive.google.com/file/d/1ySbWf3xngp0eiPzwPz-5ZHlp7V72EwGr/view?usp=sharing' 
                     drag
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     {...springProps}                
@@ -194,7 +195,7 @@ const Homepage = () => {
                 >    
                     <i class="ri-download-line text-[.8rem] text-[#FCFCFC] "></i>
                     <h6 className='uppercase text-[#FCFCFC] text-[.6rem]'>Download Resume</h6>
-                </motion.div>
+                </motion.a>
 
             </div>
             
